@@ -1,0 +1,32 @@
+{
+  "url": "https://cryptorank.io/funding-rounds",
+  "timestamp": "2026-05-22T08:13:01.703Z",
+  "lighthouse": {
+    "score": 51,
+    "metrics": {
+      "FCP": 5485,
+      "LCP": 9919,
+      "TBT": 401,
+      "CLS": "0.053",
+      "SI": 6019
+    }
+  },
+  "seo": {
+    "statusCode": 200,
+    "title": "Crypto fundraising rounds in our most up-to-date venture database | CryptoRank.io",
+    "titleLength": 81,
+    "metaDescription": "Smart Money and Fundraising: Early Funding Rounds by Institutional Investors and Funds for Crypto Startups",
+    "metaDescriptionLength": 106,
+    "metaRobots": null,
+    "canonical": "https://cryptorank.io/funding-rounds",
+    "ogTitle": "Crypto fundraising rounds in our most up-to-date venture database | CryptoRank.io",
+    "ogDescription": "Smart Money and Fundraising: Early Funding Rounds by Institutional Investors and Funds for Crypto Startups",
+    "h1": "Recent Crypto Investments and Fundraising Rounds",
+    "h1Count": 1,
+    "h2Count": 5,
+    "h3Count": 8,
+    "h1List": [
+      "Recent Crypto Investments and Fundraising Rounds"
+    ]
+  }
+}

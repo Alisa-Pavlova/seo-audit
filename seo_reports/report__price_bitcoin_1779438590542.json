@@ -1,0 +1,32 @@
+{
+  "url": "https://cryptorank.io/price/bitcoin",
+  "timestamp": "2026-05-22T08:29:50.542Z",
+  "lighthouse": {
+    "score": 71,
+    "metrics": {
+      "FCP": 2824,
+      "LCP": 3445,
+      "TBT": 355,
+      "CLS": "0.091",
+      "SI": 15084
+    }
+  },
+  "seo": {
+    "statusCode": 200,
+    "title": "Bitcoin Price | BTC Price Today, Live Chart, USD converter, Market Capitalization | CryptoRank.io",
+    "titleLength": 97,
+    "metaDescription": "Current Bitcoin (BTC) token data: Price $ 77,434, Trading Volume $ 7.74B, Market Cap N/A, Circ. Supply 20.03M, Total Supply 21.00M. Official links to websites, social networks and documents.",
+    "metaDescriptionLength": 190,
+    "metaRobots": null,
+    "canonical": "https://cryptorank.io/price/bitcoin",
+    "ogTitle": "Bitcoin Price | BTC Price Today, Live Chart, USD converter, Market Capitalization | CryptoRank.io",
+    "ogDescription": "Current Bitcoin (BTC) token data: Price $ 77,434, Trading Volume $ 7.74B, Market Cap N/A, Circ. Supply 20.03M, Total Supply 21.00M. Official links to websites, social networks and documents.",
+    "h1": "Bitcoin BTC Price",
+    "h1Count": 1,
+    "h2Count": 10,
+    "h3Count": 2,
+    "h1List": [
+      "Bitcoin BTC Price"
+    ]
+  }
+}

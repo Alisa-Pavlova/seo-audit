@@ -1,30 +1,34 @@
-import lighthouse from 'lighthouse';
-import * as chromeLauncher from 'chrome-launcher';
-import { JSDOM } from 'jsdom';
-import { promises as fs } from 'fs';
-import https from 'https';
-import http from 'http';
-import { URL } from 'url';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import lighthouse from "lighthouse";
+import * as chromeLauncher from "chrome-launcher";
+import { JSDOM } from "jsdom";
+import { promises as fs } from "fs";
+import https from "https";
+import http from "http";
+import { URL } from "url";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const REPORTS_DIR = path.join(__dirname, 'seo_reports');
+const REPORTS_DIR = path.join(__dirname, "seo_reports");
 
 // ------------------- 1. Lighthouse (настройки как у Google PSI) -------------------
 async function getLighthouseScore(url) {
   let chrome;
   try {
     chrome = await chromeLauncher.launch({
-      chromeFlags: ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage'],
+      chromeFlags: [
+        "--headless=new",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+      ],
     });
     // throttlingMethod: 'simulate' — дефолт, именно его использует Google PSI
     const options = {
-      logLevel: 'error',
-      output: 'json',
+      logLevel: "error",
+      output: "json",
       port: chrome.port,
-      onlyCategories: ['performance'],
-      formFactor: 'mobile',
+      onlyCategories: ["performance"],
+      formFactor: "mobile",
       screenEmulation: {
         mobile: true,
         width: 412,
@@ -41,15 +45,15 @@ async function getLighthouseScore(url) {
     return {
       score: Math.round(lhr.categories.performance.score * 100),
       metrics: {
-        FCP: Math.round(lhr.audits['first-contentful-paint'].numericValue),
-        LCP: Math.round(lhr.audits['largest-contentful-paint'].numericValue),
-        TBT: Math.round(lhr.audits['total-blocking-time'].numericValue),
-        CLS: lhr.audits['cumulative-layout-shift'].numericValue,
-        SI: Math.round(lhr.audits['speed-index'].numericValue),
+        FCP: Math.round(lhr.audits["first-contentful-paint"].numericValue),
+        LCP: Math.round(lhr.audits["largest-contentful-paint"].numericValue),
+        TBT: Math.round(lhr.audits["total-blocking-time"].numericValue),
+        CLS: lhr.audits["cumulative-layout-shift"].numericValue,
+        SI: Math.round(lhr.audits["speed-index"].numericValue),
       },
     };
   } catch (error) {
-    console.error('❌ Ошибка Lighthouse:', error.message);
+    console.error("❌ Ошибка Lighthouse:", error.message);
     if (chrome) chrome.kill();
     return null;
   }
@@ -59,32 +63,35 @@ async function getLighthouseScore(url) {
 function fetchUrl(url, timeout = 15000) {
   return new Promise((resolve, reject) => {
     const parsedUrl = new URL(url);
-    const protocol = parsedUrl.protocol === 'https:' ? https : http;
+    const protocol = parsedUrl.protocol === "https:" ? https : http;
 
     const options = {
       hostname: parsedUrl.hostname,
       port: parsedUrl.port,
       path: parsedUrl.pathname + parsedUrl.search,
-      method: 'GET',
+      method: "GET",
       headers: {
-        'User-Agent':
-          'Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36',
-        Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
+        "User-Agent":
+          "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36",
+        Accept:
+          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
       },
       timeout,
     };
 
     const req = protocol.request(options, (res) => {
-      let data = '';
-      res.on('data', (chunk) => {
+      let data = "";
+      res.on("data", (chunk) => {
         data += chunk;
       });
-      res.on('end', () => resolve({ statusCode: res.statusCode, headers: res.headers, data }));
+      res.on("end", () =>
+        resolve({ statusCode: res.statusCode, headers: res.headers, data }),
+      );
     });
 
-    req.on('error', reject);
-    req.on('timeout', () => {
+    req.on("error", reject);
+    req.on("timeout", () => {
       req.destroy();
       reject(new Error(`Request timeout after ${timeout}ms`));
     });
@@ -104,24 +111,28 @@ async function parseHtmlHeaders(url) {
     const dom = new JSDOM(response.data);
     const document = dom.window.document;
 
-    const title = document.querySelector('title');
+    const title = document.querySelector("title");
     const titleText = title ? title.textContent.trim() : null;
 
     const metaDesc = document.querySelector('meta[name="description"]');
-    const descText = metaDesc ? metaDesc.getAttribute('content').trim() : null;
+    const descText = metaDesc ? metaDesc.getAttribute("content").trim() : null;
 
     const metaRobots = document.querySelector('meta[name="robots"]');
-    const robotsText = metaRobots ? metaRobots.getAttribute('content').trim() : null;
+    const robotsText = metaRobots
+      ? metaRobots.getAttribute("content").trim()
+      : null;
 
     const canonical = document.querySelector('link[rel="canonical"]');
-    const canonicalUrl = canonical ? canonical.getAttribute('href').trim() : null;
+    const canonicalUrl = canonical
+      ? canonical.getAttribute("href").trim()
+      : null;
 
     const ogTitle = document.querySelector('meta[property="og:title"]');
     const ogDesc = document.querySelector('meta[property="og:description"]');
 
-    const h1Elements = document.querySelectorAll('h1');
-    const h2Elements = document.querySelectorAll('h2');
-    const h3Elements = document.querySelectorAll('h3');
+    const h1Elements = document.querySelectorAll("h1");
+    const h2Elements = document.querySelectorAll("h2");
+    const h3Elements = document.querySelectorAll("h3");
 
     return {
       statusCode: response.statusCode,
@@ -131,8 +142,8 @@ async function parseHtmlHeaders(url) {
       metaDescriptionLength: descText ? descText.length : 0,
       metaRobots: robotsText,
       canonical: canonicalUrl,
-      ogTitle: ogTitle ? ogTitle.getAttribute('content') : null,
-      ogDescription: ogDesc ? ogDesc.getAttribute('content') : null,
+      ogTitle: ogTitle ? ogTitle.getAttribute("content") : null,
+      ogDescription: ogDesc ? ogDesc.getAttribute("content") : null,
       h1: h1Elements.length > 0 ? h1Elements[0].textContent.trim() : null,
       h1Count: h1Elements.length,
       h2Count: h2Elements.length,
@@ -140,7 +151,7 @@ async function parseHtmlHeaders(url) {
       h1List: Array.from(h1Elements).map((el) => el.textContent.trim()),
     };
   } catch (error) {
-    console.error('❌ Ошибка загрузки страницы:', error.message);
+    console.error("❌ Ошибка загрузки страницы:", error.message);
     return { error: error.message };
   }
 }
@@ -149,9 +160,9 @@ async function parseHtmlHeaders(url) {
 async function loadPreviousReport(url) {
   try {
     const files = await fs.readdir(REPORTS_DIR);
-    const slug = url.replace(/[^a-z0-9]/gi, '_');
+    const slug = url.replace(/[^a-z0-9]/gi, "_");
     const matching = files
-      .filter((f) => f.startsWith(`report_${slug}_`) && f.endsWith('.json'))
+      .filter((f) => f.startsWith(`report_${slug}_`) && f.endsWith(".json"))
       .sort()
       .slice(-2); // берём последние два
 
@@ -159,7 +170,7 @@ async function loadPreviousReport(url) {
 
     // Второй с конца — предыдущий (последний — это текущий, который ещё не сохранён)
     const prev = matching[matching.length - 1];
-    const content = await fs.readFile(path.join(REPORTS_DIR, prev), 'utf-8');
+    const content = await fs.readFile(path.join(REPORTS_DIR, prev), "utf-8");
     return JSON.parse(content);
   } catch {
     return null;
@@ -168,28 +179,30 @@ async function loadPreviousReport(url) {
 
 // ------------------- 5. Генерация отчета -------------------
 function delta(current, previous, higherIsBetter = true) {
-  if (previous === null || previous === undefined) return '';
+  if (previous === null || previous === undefined) return "";
   const diff = current - previous;
-  if (diff === 0) return ' (→ без изменений)';
-  const sign = diff > 0 ? '+' : '';
+  if (diff === 0) return " (→ без изменений)";
+  const sign = diff > 0 ? "+" : "";
   const good = higherIsBetter ? diff > 0 : diff < 0;
-  return ` (${good ? '▲' : '▼'} ${sign}${diff})`;
+  return ` (${good ? "▲" : "▼"} ${sign}${diff})`;
 }
 
 function deltaMs(current, previous) {
-  if (previous === null || previous === undefined) return '';
+  if (previous === null || previous === undefined) return "";
   const diff = current - previous;
-  if (diff === 0) return ' (→ без изменений)';
-  const sign = diff > 0 ? '+' : '';
+  if (diff === 0) return " (→ без изменений)";
+  const sign = diff > 0 ? "+" : "";
   const good = diff < 0;
-  return ` (${good ? '▲' : '▼'} ${sign}${diff}ms)`;
+  return ` (${good ? "▲" : "▼"} ${sign}${diff}ms)`;
 }
 
 function generateReport(url, lhResult, htmlData, prev) {
-  const timestamp = new Date().toLocaleString('ru-RU');
+  const timestamp = new Date().toLocaleString("ru-RU");
   const prevLh = prev?.lighthouse;
   const prevSeo = prev?.seo;
-  const prevDate = prev ? new Date(prev.timestamp).toLocaleString('ru-RU') : null;
+  const prevDate = prev
+    ? new Date(prev.timestamp).toLocaleString("ru-RU")
+    : null;
 
   let report = `
 ╔══════════════════════════════════════════════════════════════╗
@@ -198,7 +211,7 @@ function generateReport(url, lhResult, htmlData, prev) {
 
 🌐 URL: ${url}
 📅 Дата: ${timestamp}
-${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : '📅 Предыдущий аудит: —'}
+${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : "📅 Предыдущий аудит: —"}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
@@ -208,7 +221,7 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : '📅 Пре�
   if (lhResult) {
     const score = lhResult.score;
     const m = lhResult.metrics;
-    let emoji = score >= 90 ? '🟢' : score >= 50 ? '🟡' : '🔴';
+    let emoji = score >= 90 ? "🟢" : score >= 50 ? "🟡" : "🔴";
 
     report += `${emoji} Performance Score: ${score}/100${delta(score, prevLh?.score)}\n\n`;
     report += `   Core Web Vitals:\n`;
@@ -217,8 +230,8 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : '📅 Пре�
     report += `   • TBT (Total Blocking Time):      ${m.TBT}ms${deltaMs(m.TBT, prevLh?.metrics?.TBT)}\n`;
     report += `   • CLS (Cumulative Layout Shift):  ${m.CLS}${deltaMs(
       parseFloat(m.CLS) * 1000,
-      prevLh?.metrics ? parseFloat(prevLh.metrics.CLS) * 1000 : undefined
-    ).replace('ms', '')}\n`;
+      prevLh?.metrics ? parseFloat(prevLh.metrics.CLS) * 1000 : undefined,
+    ).replace("ms", "")}\n`;
     report += `   • SI  (Speed Index):              ${m.SI}ms${deltaMs(m.SI, prevLh?.metrics?.SI)}\n`;
 
     report += `\n   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1\n`;
@@ -242,14 +255,19 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : '📅 Пре�
     if (!htmlData.title) {
       report += `🏷️  Title: ❌ Отсутствует\n`;
     } else {
-      const titleChange = prevSeo?.title && prevSeo.title !== htmlData.title ? ' ⚡ изменился' : '';
+      const titleChange =
+        prevSeo?.title && prevSeo.title !== htmlData.title
+          ? " ⚡ изменился"
+          : "";
       report += `🏷️  Title (${htmlData.titleLength} симв.${delta(
         htmlData.titleLength,
-        prevSeo?.titleLength
+        prevSeo?.titleLength,
       )}${titleChange}):\n`;
       report += `   "${htmlData.title}"\n`;
-      if (htmlData.titleLength < 30) report += `   ⚠️  Слишком короткий (норма: 30–60)\n`;
-      else if (htmlData.titleLength > 70) report += `   ⚠️  Слишком длинный, обрежется в выдаче (норма: 30–60)\n`;
+      if (htmlData.titleLength < 30)
+        report += `   ⚠️  Слишком короткий (норма: 30–60)\n`;
+      else if (htmlData.titleLength > 70)
+        report += `   ⚠️  Слишком длинный, обрежется в выдаче (норма: 30–60)\n`;
       else report += `   ✅ Длина в норме\n`;
     }
 
@@ -259,24 +277,29 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : '📅 Пре�
       report += `: ❌ Отсутствует\n`;
     } else {
       const descChange =
-        prevSeo?.metaDescription && prevSeo.metaDescription !== htmlData.metaDescription ? ' ⚡ изменилось' : '';
+        prevSeo?.metaDescription &&
+        prevSeo.metaDescription !== htmlData.metaDescription
+          ? " ⚡ изменилось"
+          : "";
       report += ` (${htmlData.metaDescriptionLength} симв.${delta(
         htmlData.metaDescriptionLength,
-        prevSeo?.metaDescriptionLength
+        prevSeo?.metaDescriptionLength,
       )}${descChange}):\n`;
       report += `   "${htmlData.metaDescription}"\n`;
-      if (htmlData.metaDescriptionLength < 50) report += `   ⚠️  Слишком короткое (норма: 50–160)\n`;
-      else if (htmlData.metaDescriptionLength > 160) report += `   ⚠️  Слишком длинное (норма: 50–160)\n`;
+      if (htmlData.metaDescriptionLength < 50)
+        report += `   ⚠️  Слишком короткое (норма: 50–160)\n`;
+      else if (htmlData.metaDescriptionLength > 160)
+        report += `   ⚠️  Слишком длинное (норма: 50–160)\n`;
       else report += `   ✅ Длина в норме\n`;
     }
 
     // OG теги
-    report += `\n🔵 OG Title: ${htmlData.ogTitle || '❌ Не задан'}\n`;
-    report += `🔵 OG Description: ${htmlData.ogDescription || '❌ Не задан'}\n`;
+    report += `\n🔵 OG Title: ${htmlData.ogTitle || "❌ Не задан"}\n`;
+    report += `🔵 OG Description: ${htmlData.ogDescription || "❌ Не задан"}\n`;
 
     // Robots & Canonical
-    report += `\n🤖 Meta Robots: ${htmlData.metaRobots || '❌ Не задан'}\n`;
-    report += `🔗 Canonical: ${htmlData.canonical || '❌ Не задан'}\n`;
+    report += `\n🤖 Meta Robots: ${htmlData.metaRobots || "❌ Не задан"}\n`;
+    report += `🔗 Canonical: ${htmlData.canonical || "❌ Не задан"}\n`;
     if (htmlData.canonical && htmlData.canonical !== url) {
       report += `   ℹ️  Canonical указывает на другой URL\n`;
     }
@@ -288,7 +311,7 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : '📅 Пре�
     } else {
       report += `   "${htmlData.h1}"\n`;
       if (htmlData.h1Count > 1) {
-        report += `   ⚠️  Несколько H1: ${htmlData.h1List.join(' | ').substring(0, 200)}\n`;
+        report += `   ⚠️  Несколько H1: ${htmlData.h1List.join(" | ").substring(0, 200)}\n`;
       } else {
         report += `   ✅ Один H1\n`;
       }
@@ -301,7 +324,8 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : '📅 Пре�
     report += `\n📊 Заголовки: H2: ${htmlData.h2Count}${delta(htmlData.h2Count, prevSeo?.h2Count)} | H3: ${
       htmlData.h3Count
     }${delta(htmlData.h3Count, prevSeo?.h3Count)}\n`;
-    if (htmlData.h2Count === 0) report += `   ⚠️  Нет H2 — добавьте для структуры контента\n`;
+    if (htmlData.h2Count === 0)
+      report += `   ⚠️  Нет H2 — добавьте для структуры контента\n`;
   } else if (htmlData?.error) {
     report += `❌ Не удалось загрузить страницу: ${htmlData.error}\n`;
   }
@@ -315,23 +339,30 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : '📅 Пре�
 
   const tasks = [];
   if (htmlData && !htmlData.error) {
-    if (!htmlData.title) tasks.push('🔴 Добавить <title>');
-    if (!htmlData.metaDescription) tasks.push('🟡 Добавить meta description');
-    if (htmlData.h1Count === 0) tasks.push('🔴 Добавить H1');
-    if (htmlData.h1Count > 1) tasks.push('🟡 Оставить один H1');
-    if (htmlData.titleLength > 70) tasks.push('🟡 Сократить title до 60 символов');
-    if (htmlData.titleLength < 30 && htmlData.title) tasks.push('🟡 Расширить title до 30–60 символов');
-    if (htmlData.metaDescriptionLength > 160) tasks.push('🟡 Сократить meta description до 160 символов');
+    if (!htmlData.title) tasks.push("🔴 Добавить <title>");
+    if (!htmlData.metaDescription) tasks.push("🟡 Добавить meta description");
+    if (htmlData.h1Count === 0) tasks.push("🔴 Добавить H1");
+    if (htmlData.h1Count > 1) tasks.push("🟡 Оставить один H1");
+    if (htmlData.titleLength > 70)
+      tasks.push("🟡 Сократить title до 60 символов");
+    if (htmlData.titleLength < 30 && htmlData.title)
+      tasks.push("🟡 Расширить title до 30–60 символов");
+    if (htmlData.metaDescriptionLength > 160)
+      tasks.push("🟡 Сократить meta description до 160 символов");
     if (htmlData.metaDescriptionLength < 50 && htmlData.metaDescription)
-      tasks.push('🟡 Расширить meta description до 50–160 символов');
-    if (htmlData.h2Count === 0 && htmlData.h1Count > 0) tasks.push('📑 Добавить H2 для структуры');
-    if (!htmlData.ogTitle) tasks.push('🔵 Добавить og:title');
-    if (!htmlData.ogDescription) tasks.push('🔵 Добавить og:description');
+      tasks.push("🟡 Расширить meta description до 50–160 символов");
+    if (htmlData.h2Count === 0 && htmlData.h1Count > 0)
+      tasks.push("📑 Добавить H2 для структуры");
+    if (!htmlData.ogTitle) tasks.push("🔵 Добавить og:title");
+    if (!htmlData.ogDescription) tasks.push("🔵 Добавить og:description");
   }
   if (lhResult) {
-    if (lhResult.metrics.LCP > 2500) tasks.push(`🔴 LCP ${lhResult.metrics.LCP}ms → нужно < 2500ms`);
-    if (lhResult.metrics.TBT > 200) tasks.push(`🟡 TBT ${lhResult.metrics.TBT}ms → нужно < 200ms`);
-    if (parseFloat(lhResult.metrics.CLS) > 0.1) tasks.push(`🟡 CLS ${lhResult.metrics.CLS} → нужно < 0.1`);
+    if (lhResult.metrics.LCP > 2500)
+      tasks.push(`🔴 LCP ${lhResult.metrics.LCP}ms → нужно < 2500ms`);
+    if (lhResult.metrics.TBT > 200)
+      tasks.push(`🟡 TBT ${lhResult.metrics.TBT}ms → нужно < 200ms`);
+    if (parseFloat(lhResult.metrics.CLS) > 0.1)
+      tasks.push(`🟡 CLS ${lhResult.metrics.CLS} → нужно < 0.1`);
   }
 
   if (tasks.length === 0) {
@@ -356,10 +387,15 @@ async function saveJsonReport(url, lhResult, htmlData, filename) {
   const report = {
     url,
     timestamp: new Date().toISOString(),
-    lighthouse: lhResult ? { score: lhResult.score, metrics: lhResult.metrics } : null,
-    seo: htmlData && !htmlData.error ? { ...htmlData } : { error: htmlData?.error || 'Unknown error' },
+    lighthouse: lhResult
+      ? { score: lhResult.score, metrics: lhResult.metrics }
+      : null,
+    seo:
+      htmlData && !htmlData.error
+        ? { ...htmlData }
+        : { error: htmlData?.error || "Unknown error" },
   };
-  await fs.writeFile(filename, JSON.stringify(report, null, 2), 'utf-8');
+  await fs.writeFile(filename, JSON.stringify(report, null, 2), "utf-8");
 }
 
 // ------------------- 7. Вспомогательные функции -------------------
@@ -390,15 +426,32 @@ async function getAverageLighthouseScore(url, baseUrl) {
   }
 
   // Считаем среднее
-  const avgScore = Math.round(validResults.reduce((sum, r) => sum + r.score, 0) / validResults.length);
+  const avgScore = Math.round(
+    validResults.reduce((sum, r) => sum + r.score, 0) / validResults.length,
+  );
 
   // Усредняем метрики
   const avgMetrics = {
-    FCP: Math.round(validResults.reduce((sum, r) => sum + r.metrics.FCP, 0) / validResults.length),
-    LCP: Math.round(validResults.reduce((sum, r) => sum + r.metrics.LCP, 0) / validResults.length),
-    TBT: Math.round(validResults.reduce((sum, r) => sum + r.metrics.TBT, 0) / validResults.length),
-    CLS: (validResults.reduce((sum, r) => sum + parseFloat(r.metrics.CLS), 0) / validResults.length).toFixed(3),
-    SI: Math.round(validResults.reduce((sum, r) => sum + r.metrics.SI, 0) / validResults.length),
+    FCP: Math.round(
+      validResults.reduce((sum, r) => sum + r.metrics.FCP, 0) /
+        validResults.length,
+    ),
+    LCP: Math.round(
+      validResults.reduce((sum, r) => sum + r.metrics.LCP, 0) /
+        validResults.length,
+    ),
+    TBT: Math.round(
+      validResults.reduce((sum, r) => sum + r.metrics.TBT, 0) /
+        validResults.length,
+    ),
+    CLS: (
+      validResults.reduce((sum, r) => sum + parseFloat(r.metrics.CLS), 0) /
+      validResults.length
+    ).toFixed(3),
+    SI: Math.round(
+      validResults.reduce((sum, r) => sum + r.metrics.SI, 0) /
+        validResults.length,
+    ),
   };
 
   return {
@@ -411,25 +464,31 @@ async function getAverageLighthouseScore(url, baseUrl) {
 
 function generateSummaryReport(results, baseUrl) {
   const now = new Date();
-  const dateStr = `${String(now.getDate()).padStart(2, '0')}-${String(now.getMonth() + 1).padStart(
-    2,
-    '0'
-  )}-${now.getFullYear()}`;
+  const dateStr = `${String(now.getDate()).padStart(2, "0")}-${String(
+    now.getMonth() + 1,
+  ).padStart(2, "0")}-${now.getFullYear()}`;
 
-  const validScores = results.filter((r) => r.lhResult !== null).map((r) => r.lhResult.score);
+  const validScores = results
+    .filter((r) => r.lhResult !== null)
+    .map((r) => r.lhResult.score);
   const overallAvgScore =
-    validScores.length > 0 ? Math.round(validScores.reduce((a, b) => a + b, 0) / validScores.length) : 0;
+    validScores.length > 0
+      ? Math.round(validScores.reduce((a, b) => a + b, 0) / validScores.length)
+      : 0;
 
   // Подготовка данных для таблицы
   const rows = results.map((r) => {
-    const scoreEmoji = r.lhResult?.score >= 90 ? '🟢' : r.lhResult?.score >= 50 ? '🟡' : '🔴';
+    const scoreEmoji =
+      r.lhResult?.score >= 90 ? "🟢" : r.lhResult?.score >= 50 ? "🟡" : "🔴";
     return {
-      url: r.url.length > 30 ? r.url.substring(0, 27) + '...' : r.url,
-      score: r.lhResult?.score ?? 'N/A',
-      lcp: r.lhResult?.metrics?.LCP ?? 'N/A',
-      tbt: r.lhResult?.metrics?.TBT ?? 'N/A',
-      cls: r.lhResult?.metrics?.CLS ?? 'N/A',
-      status: r.lhResult ? `${scoreEmoji} ${r.lhResult.validCount}/${r.lhResult.totalCount}` : '❌',
+      url: r.url.length > 30 ? r.url.substring(0, 27) + "..." : r.url,
+      score: r.lhResult?.score ?? "N/A",
+      lcp: r.lhResult?.metrics?.LCP ?? "N/A",
+      tbt: r.lhResult?.metrics?.TBT ?? "N/A",
+      cls: r.lhResult?.metrics?.CLS ?? "N/A",
+      status: r.lhResult
+        ? `${scoreEmoji} ${r.lhResult.validCount}/${r.lhResult.totalCount}`
+        : "❌",
     };
   });
 
@@ -448,28 +507,28 @@ function generateSummaryReport(results, baseUrl) {
   const padLeft = (str, width) => String(str).padStart(width);
 
   // Построение разделителя
-  const separator = `┌─${'-'.repeat(colWidths.url)}─┬─${'-'.repeat(colWidths.score)}─┬─${'-'.repeat(
-    colWidths.lcp
-  )}─┬─${'-'.repeat(colWidths.tbt)}─┬─${'-'.repeat(colWidths.cls)}─┬─${'-'.repeat(colWidths.status)}─┐`;
-  const divider = `├─${'-'.repeat(colWidths.url)}─┼─${'-'.repeat(colWidths.score)}─┼─${'-'.repeat(
-    colWidths.lcp
-  )}─┼─${'-'.repeat(colWidths.tbt)}─┼─${'-'.repeat(colWidths.cls)}─┼─${'-'.repeat(colWidths.status)}─┤`;
-  const footer = `└─${'-'.repeat(colWidths.url)}─┴─${'-'.repeat(colWidths.score)}─┴─${'-'.repeat(
-    colWidths.lcp
-  )}─┴─${'-'.repeat(colWidths.tbt)}─┴─${'-'.repeat(colWidths.cls)}─┴─${'-'.repeat(colWidths.status)}─┘`;
+  const separator = `┌─${"-".repeat(colWidths.url)}─┬─${"-".repeat(colWidths.score)}─┬─${"-".repeat(
+    colWidths.lcp,
+  )}─┬─${"-".repeat(colWidths.tbt)}─┬─${"-".repeat(colWidths.cls)}─┬─${"-".repeat(colWidths.status)}─┐`;
+  const divider = `├─${"-".repeat(colWidths.url)}─┼─${"-".repeat(colWidths.score)}─┼─${"-".repeat(
+    colWidths.lcp,
+  )}─┼─${"-".repeat(colWidths.tbt)}─┼─${"-".repeat(colWidths.cls)}─┼─${"-".repeat(colWidths.status)}─┤`;
+  const footer = `└─${"-".repeat(colWidths.url)}─┴─${"-".repeat(colWidths.score)}─┴─${"-".repeat(
+    colWidths.lcp,
+  )}─┴─${"-".repeat(colWidths.tbt)}─┴─${"-".repeat(colWidths.cls)}─┴─${"-".repeat(colWidths.status)}─┘`;
 
   // Построение таблицы
   let tableLines = [separator];
 
   // Заголовок
   tableLines.push(
-    `│ ${padRight('URL', colWidths.url)} │ ${padLeft('Score', colWidths.score)} │ ${padLeft(
-      'LCP (ms)',
-      colWidths.lcp
-    )} │ ${padLeft('TBT (ms)', colWidths.tbt)} │ ${padLeft('CLS', colWidths.cls)} │ ${padRight(
-      'Статус',
-      colWidths.status
-    )} │`
+    `│ ${padRight("URL", colWidths.url)} │ ${padLeft("Score", colWidths.score)} │ ${padLeft(
+      "LCP (ms)",
+      colWidths.lcp,
+    )} │ ${padLeft("TBT (ms)", colWidths.tbt)} │ ${padLeft("CLS", colWidths.cls)} │ ${padRight(
+      "Статус",
+      colWidths.status,
+    )} │`,
   );
   tableLines.push(divider);
 
@@ -478,17 +537,17 @@ function generateSummaryReport(results, baseUrl) {
     tableLines.push(
       `│ ${padRight(r.url, colWidths.url)} │ ${padLeft(r.score, colWidths.score)} │ ${padLeft(
         r.lcp,
-        colWidths.lcp
+        colWidths.lcp,
       )} │ ${padLeft(r.tbt, colWidths.tbt)} │ ${padLeft(r.cls, colWidths.cls)} │ ${padRight(
         r.status,
-        colWidths.status
-      )} │`
+        colWidths.status,
+      )} │`,
     );
   });
 
   tableLines.push(footer);
 
-  const table = tableLines.join('\n');
+  const table = tableLines.join("\n");
 
   let report = `
 ╔══════════════════════════════════════════════════════════════╗
@@ -496,7 +555,7 @@ function generateSummaryReport(results, baseUrl) {
 ╚══════════════════════════════════════════════════════════════╝
 
 🌐 Сайт: ${baseUrl}
-📅 Дата: ${now.toLocaleString('ru-RU')}
+📅 Дата: ${now.toLocaleString("ru-RU")}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📈 ОБЩИЕ ПОКАЗАТЕЛИ
@@ -523,18 +582,18 @@ async function runSeoAuditBatch(baseUrl) {
   await fs.mkdir(REPORTS_DIR, { recursive: true });
 
   const urls = [
-    '',
-    '/drophunting',
-    '/funding-rounds',
-    '/all-coins-list',
-    '/funds',
-    '/insights/research/coinhold-by-emcd-fee-based-yield-on-a-mining-ecosystem',
-    '/upcoming-ico',
-    '/price/bitcoin',
-    '/token-unlock',
-    '/trending',
-    '/plans',
-    '/gainers',
+    "",
+    "/drophunting",
+    "/funding-rounds",
+    "/all-coins-list",
+    "/funds",
+    "/insights/research/coinhold-by-emcd-fee-based-yield-on-a-mining-ecosystem",
+    "/upcoming-ico",
+    "/price/bitcoin",
+    "/token-unlock",
+    "/trending",
+    "/plans",
+    "/gainers",
   ];
 
   const results = [];
@@ -544,12 +603,12 @@ async function runSeoAuditBatch(baseUrl) {
     const fullUrl = baseUrl + url;
 
     console.log(`\n📍 Страница ${idx + 1}/${urls.length}: ${url}`);
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
-    console.log('📡 Анализ HTML структуры...');
+    console.log("📡 Анализ HTML структуры...");
     const htmlData = await parseHtmlHeaders(fullUrl);
 
-    console.log('⚡ Запуск Lighthouse (3 попытки)...');
+    console.log("⚡ Запуск Lighthouse (3 попытки)...");
     const lhResult = await getAverageLighthouseScore(url, baseUrl);
 
     // Загружаем предыдущий отчет для сравнения
@@ -559,36 +618,47 @@ async function runSeoAuditBatch(baseUrl) {
     console.log(report);
 
     // Сохраняем
-    const slug = url.replace(/[^a-z0-9]/gi, '_');
+    const slug = url.replace(/[^a-z0-9]/gi, "_");
     const auditTimestamp = Date.now();
-    const txtFilename = path.join(REPORTS_DIR, `report_${slug}_${auditTimestamp}.txt`);
-    const jsonFilename = path.join(REPORTS_DIR, `report_${slug}_${auditTimestamp}.json`);
+    const txtFilename = path.join(
+      REPORTS_DIR,
+      `report_${slug}_${auditTimestamp}.txt`,
+    );
+    const jsonFilename = path.join(
+      REPORTS_DIR,
+      `report_${slug}_${auditTimestamp}.json`,
+    );
 
-    await fs.writeFile(txtFilename, report, 'utf-8');
+    await fs.writeFile(txtFilename, report, "utf-8");
     await saveJsonReport(fullUrl, lhResult, htmlData, jsonFilename);
 
     results.push({ url, lhResult, htmlData });
 
     // Задержка перед следующей страницей
     if (idx < urls.length - 1) {
-      console.log('⏳ Пауза перед следующей страницей (15 сек)...');
+      console.log("⏳ Пауза перед следующей страницей (15 сек)...");
       await delay(15000);
     }
   }
 
   // Генерируем итоговый отчет
-  console.log('\n\n═══════════════════════════════════════════════════════════');
-  console.log('📊 ФОРМИРОВАНИЕ ИТОГОВОГО ОТЧЕТА');
-  console.log('═══════════════════════════════════════════════════════════\n');
+  console.log(
+    "\n\n═══════════════════════════════════════════════════════════",
+  );
+  console.log("📊 ФОРМИРОВАНИЕ ИТОГОВОГО ОТЧЕТА");
+  console.log("═══════════════════════════════════════════════════════════\n");
 
-  const { report: summaryReport, dateStr } = generateSummaryReport(results, baseUrl);
+  const { report: summaryReport, dateStr } = generateSummaryReport(
+    results,
+    baseUrl,
+  );
   console.log(summaryReport);
 
   // Сохраняем итоговый отчет
   const summaryTxtFilename = path.join(REPORTS_DIR, `audit_${dateStr}.txt`);
   const summaryJsonFilename = path.join(REPORTS_DIR, `audit_${dateStr}.json`);
 
-  await fs.writeFile(summaryTxtFilename, summaryReport, 'utf-8');
+  await fs.writeFile(summaryTxtFilename, summaryReport, "utf-8");
 
   const summaryJsonData = {
     timestamp: new Date().toISOString(),
@@ -599,7 +669,8 @@ async function runSeoAuditBatch(baseUrl) {
             results
               .filter((r) => r.lhResult)
               .map((r) => r.lhResult.score)
-              .reduce((a, b) => a + b, 0) / results.filter((r) => r.lhResult).length
+              .reduce((a, b) => a + b, 0) /
+              results.filter((r) => r.lhResult).length,
           )
         : null,
     pages: results.map((r) => ({
@@ -610,12 +681,16 @@ async function runSeoAuditBatch(baseUrl) {
       totalCount: r.lhResult?.totalCount ?? null,
     })),
   };
-  await fs.writeFile(summaryJsonFilename, JSON.stringify(summaryJsonData, null, 2), 'utf-8');
+  await fs.writeFile(
+    summaryJsonFilename,
+    JSON.stringify(summaryJsonData, null, 2),
+    "utf-8",
+  );
 
   console.log(`\n💾 Все отчеты сохранены в ./seo_reports/`);
   console.log(`📄 Итоговый отчет: audit_${dateStr}.txt`);
 }
 
 // ------------------- 9. Запуск -------------------
-const baseUrl = process.argv[2] || 'https://cryptorank.io';
+const baseUrl = process.argv[2] || "https://cryptorank.io";
 runSeoAuditBatch(baseUrl).catch(console.error);

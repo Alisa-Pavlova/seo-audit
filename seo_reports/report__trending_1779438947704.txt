@@ -1,0 +1,62 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                    📊 SEO АУДИТ САЙТА                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URL: https://cryptorank.io/trending
+📅 Дата: 22.05.2026, 11:35:47
+📅 Предыдущий аудит: 12.05.2026, 14:34:44
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟡 Performance Score: 57/100 (▼ -4)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2704ms (▼ +22ms)
+   • LCP (Largest Contentful Paint): 8904ms (▼ +203ms)
+   • TBT (Total Blocking Time):      376ms (▼ +26ms)
+   • CLS (Cumulative Layout Shift):  0.002 (▲ -3)
+   • SI  (Speed Index):              14986ms (▼ +10858ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 SEO ЭЛЕМЕНТЫ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 HTTP Status: 200
+
+🏷️  Title (54 симв. (→ без изменений)):
+   "Popular & Trending Coins on CryptoRank | CryptoRank.io"
+   ✅ Длина в норме
+
+📄 Meta Description (167 симв. (→ без изменений)):
+   "Trending highlights cryptocurrencies that are currently attracting increased market attention based on a combination of liquidity, trading activity, and price dynamics"
+   ⚠️  Слишком длинное (норма: 50–160)
+
+🔵 OG Title: Popular & Trending Coins on CryptoRank | CryptoRank.io
+🔵 OG Description: Trending highlights cryptocurrencies that are currently attracting increased market attention based on a combination of liquidity, trading activity, and price dynamics
+
+🤖 Meta Robots: ❌ Не задан
+🔗 Canonical: https://cryptorank.io/trending
+
+📌 H1 (1 шт. (→ без изменений)):
+   "Popular & Trending Coins on CryptoRank"
+   ✅ Один H1
+
+📊 Заголовки: H2: 0 (→ без изменений) | H3: 1 (→ без изменений)
+   ⚠️  Нет H2 — добавьте для структуры контента
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🟡 Сократить meta description до 160 символов
+2. 📑 Добавить H2 для структуры
+3. 🔴 LCP 8904ms → нужно < 2500ms
+4. 🟡 TBT 376ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Аудит завершен
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

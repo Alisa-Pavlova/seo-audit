@@ -1,0 +1,32 @@
+{
+  "url": "https://cryptorank.io/trending",
+  "timestamp": "2026-05-22T08:35:47.704Z",
+  "lighthouse": {
+    "score": 57,
+    "metrics": {
+      "FCP": 2704,
+      "LCP": 8904,
+      "TBT": 376,
+      "CLS": "0.002",
+      "SI": 14986
+    }
+  },
+  "seo": {
+    "statusCode": 200,
+    "title": "Popular & Trending Coins on CryptoRank | CryptoRank.io",
+    "titleLength": 54,
+    "metaDescription": "Trending highlights cryptocurrencies that are currently attracting increased market attention based on a combination of liquidity, trading activity, and price dynamics",
+    "metaDescriptionLength": 167,
+    "metaRobots": null,
+    "canonical": "https://cryptorank.io/trending",
+    "ogTitle": "Popular & Trending Coins on CryptoRank | CryptoRank.io",
+    "ogDescription": "Trending highlights cryptocurrencies that are currently attracting increased market attention based on a combination of liquidity, trading activity, and price dynamics",
+    "h1": "Popular & Trending Coins on CryptoRank",
+    "h1Count": 1,
+    "h2Count": 0,
+    "h3Count": 1,
+    "h1List": [
+      "Popular & Trending Coins on CryptoRank"
+    ]
+  }
+}
