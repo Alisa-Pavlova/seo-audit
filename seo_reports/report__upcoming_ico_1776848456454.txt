@@ -1,0 +1,60 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                    📊 SEO АУДИТ САЙТА                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URL: https://cryptorank.io/upcoming-ico
+📅 Дата: 22.04.2026, 12:00:56
+📅 Предыдущий аудит: —
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟡 Performance Score: 50/100
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 4757ms
+   • LCP (Largest Contentful Paint): 11077ms
+   • TBT (Total Blocking Time):      397ms
+   • CLS (Cumulative Layout Shift):  0.063
+   • SI  (Speed Index):              6094ms
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 SEO ЭЛЕМЕНТЫ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 HTTP Status: 200
+
+🏷️  Title (51 симв.):
+   "Upcoming IDO, IEO & ICO Token Sales | CryptoRank.io"
+   ✅ Длина в норме
+
+📄 Meta Description (197 симв.):
+   "Explore full list & metrics of upcoming crypto token sales. Details on price, launchpads, and investor data. Stay ahead of the market with data-driven insights into IDO, IEO, and ICO opportunities."
+   ⚠️  Слишком длинное (норма: 50–160)
+
+🔵 OG Title: Upcoming IDO, IEO & ICO Token Sales | CryptoRank.io
+🔵 OG Description: Explore full list & metrics of upcoming crypto token sales. Details on price, launchpads, and investor data. Stay ahead of the market with data-driven insights into IDO, IEO, and ICO opportunities.
+
+🤖 Meta Robots: ❌ Не задан
+🔗 Canonical: https://cryptorank.io/upcoming-ico
+
+📌 H1 (1 шт.):
+   "List of Upcoming IDO/IEO/ICO"
+   ✅ Один H1
+
+📊 Заголовки: H2: 2 | H3: 6
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🟡 Сократить meta description до 160 символов
+2. 🔴 LCP 11077ms → нужно < 2500ms
+3. 🟡 TBT 397ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Аудит завершен
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

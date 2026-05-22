@@ -1,0 +1,32 @@
+{
+  "url": "https://cryptorank.io/upcoming-ico",
+  "timestamp": "2026-04-22T09:00:56.455Z",
+  "lighthouse": {
+    "score": 50,
+    "metrics": {
+      "FCP": 4757,
+      "LCP": 11077,
+      "TBT": 397,
+      "CLS": "0.063",
+      "SI": 6094
+    }
+  },
+  "seo": {
+    "statusCode": 200,
+    "title": "Upcoming IDO, IEO & ICO Token Sales | CryptoRank.io",
+    "titleLength": 51,
+    "metaDescription": "Explore full list & metrics of upcoming crypto token sales. Details on price, launchpads, and investor data. Stay ahead of the market with data-driven insights into IDO, IEO, and ICO opportunities.",
+    "metaDescriptionLength": 197,
+    "metaRobots": null,
+    "canonical": "https://cryptorank.io/upcoming-ico",
+    "ogTitle": "Upcoming IDO, IEO & ICO Token Sales | CryptoRank.io",
+    "ogDescription": "Explore full list & metrics of upcoming crypto token sales. Details on price, launchpads, and investor data. Stay ahead of the market with data-driven insights into IDO, IEO, and ICO opportunities.",
+    "h1": "List of Upcoming IDO/IEO/ICO",
+    "h1Count": 1,
+    "h2Count": 2,
+    "h3Count": 6,
+    "h1List": [
+      "List of Upcoming IDO/IEO/ICO"
+    ]
+  }
+}

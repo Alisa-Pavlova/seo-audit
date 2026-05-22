@@ -1,0 +1,61 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                    📊 SEO АУДИТ САЙТА                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URL: https://cryptorank.io/price/bitcoin
+📅 Дата: 30.03.2026, 13:51:36
+📅 Предыдущий аудит: —
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟡 Performance Score: 53/100
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 1964ms
+   • LCP (Largest Contentful Paint): 4072ms
+   • TBT (Total Blocking Time):      1817ms
+   • CLS (Cumulative Layout Shift):  0.06306300000000001
+   • SI  (Speed Index):              5527ms
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 SEO ЭЛЕМЕНТЫ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 HTTP Status: 200
+
+🏷️  Title (97 симв.):
+   "Bitcoin Price | BTC Price Today, Live Chart, USD converter, Market Capitalization | CryptoRank.io"
+   ⚠️  Слишком длинный, обрежется в выдаче (норма: 30–60)
+
+📄 Meta Description (190 симв.):
+   "Current Bitcoin (BTC) token data: Price $ 67,380, Trading Volume $ 9.14B, Market Cap N/A, Circ. Supply 20.01M, Total Supply 21.00M. Official links to websites, social networks and documents."
+   ⚠️  Слишком длинное (норма: 50–160)
+
+🔵 OG Title: Bitcoin Price | BTC Price Today, Live Chart, USD converter, Market Capitalization | CryptoRank.io
+🔵 OG Description: Current Bitcoin (BTC) token data: Price $ 67,380, Trading Volume $ 9.14B, Market Cap N/A, Circ. Supply 20.01M, Total Supply 21.00M. Official links to websites, social networks and documents.
+
+🤖 Meta Robots: ❌ Не задан
+🔗 Canonical: https://cryptorank.io/price/bitcoin
+
+📌 H1 (1 шт.):
+   "Bitcoin BTCPrice $ 67,380"
+   ✅ Один H1
+
+📊 Заголовки: H2: 9 | H3: 2
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🟡 Сократить title до 60 символов
+2. 🟡 Сократить meta description до 160 символов
+3. 🔴 LCP 4072ms → нужно < 2500ms
+4. 🟡 TBT 1817ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Аудит завершен
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

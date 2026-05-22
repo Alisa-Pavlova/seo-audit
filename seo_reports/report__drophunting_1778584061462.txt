@@ -1,0 +1,61 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                    📊 SEO АУДИТ САЙТА                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URL: https://cryptorank.io/drophunting
+📅 Дата: 12.05.2026, 14:07:41
+📅 Предыдущий аудит: 22.04.2026, 11:47:06
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟡 Performance Score: 68/100 (▲ +22)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2652ms (▲ -3698ms)
+   • LCP (Largest Contentful Paint): 4074ms (▲ -8215ms)
+   • TBT (Total Blocking Time):      413ms (▲ -80ms)
+   • CLS (Cumulative Layout Shift):  0.093 (▼ +93)
+   • SI  (Speed Index):              4444ms (▲ -3018ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 SEO ЭЛЕМЕНТЫ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 HTTP Status: 200
+
+🏷️  Title (111 симв. (→ без изменений)):
+   "Crypto Airdrops: Up-to-Date Airdrops List 2026, Free Tokens, Complete Guides, and Instructions. | CryptoRank.io"
+   ⚠️  Слишком длинный, обрежется в выдаче (норма: 30–60)
+
+📄 Meta Description (187 симв. (→ без изменений)):
+   "List of New Cryptocurrency Airdrops for 2026. Master the Art of Drop Hunting: Become a Contender for Free Tokens and Unlock Lucrative Opportunities in Cryptocurrency, Blockchain, and Web3"
+   ⚠️  Слишком длинное (норма: 50–160)
+
+🔵 OG Title: Crypto Airdrops: Up-to-Date Airdrops List 2026, Free Tokens, Complete Guides, and Instructions. | CryptoRank.io
+🔵 OG Description: List of New Cryptocurrency Airdrops for 2026. Master the Art of Drop Hunting: Become a Contender for Free Tokens and Unlock Lucrative Opportunities in Cryptocurrency, Blockchain, and Web3
+
+🤖 Meta Robots: ❌ Не задан
+🔗 Canonical: https://cryptorank.io/drophunting
+
+📌 H1 (1 шт. (→ без изменений)):
+   "Potential Airdrops Dashboard"
+   ✅ Один H1
+
+📊 Заголовки: H2: 5 (→ без изменений) | H3: 8 (→ без изменений)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🟡 Сократить title до 60 символов
+2. 🟡 Сократить meta description до 160 символов
+3. 🔴 LCP 4074ms → нужно < 2500ms
+4. 🟡 TBT 413ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Аудит завершен
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

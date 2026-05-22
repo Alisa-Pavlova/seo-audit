@@ -1,0 +1,163 @@
+{
+  "timestamp": "2026-04-22T09:14:15.562Z",
+  "baseUrl": "https://cryptorank.io",
+  "overallScore": 52,
+  "pages": [
+    {
+      "url": "/",
+      "score": 52,
+      "metrics": {
+        "FCP": 6485,
+        "LCP": 15307,
+        "TBT": 273,
+        "CLS": "0.000",
+        "SI": 8376
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/drophunting",
+      "score": 46,
+      "metrics": {
+        "FCP": 6350,
+        "LCP": 12289,
+        "TBT": 493,
+        "CLS": "0.000",
+        "SI": 7462
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/funding-rounds",
+      "score": 53,
+      "metrics": {
+        "FCP": 4837,
+        "LCP": 11199,
+        "TBT": 356,
+        "CLS": "0.044",
+        "SI": 5732
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/all-coins-list",
+      "score": 47,
+      "metrics": {
+        "FCP": 2290,
+        "LCP": 9941,
+        "TBT": 988,
+        "CLS": "0.065",
+        "SI": 4841
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/funds",
+      "score": 54,
+      "metrics": {
+        "FCP": 4764,
+        "LCP": 10757,
+        "TBT": 346,
+        "CLS": "0.048",
+        "SI": 6031
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/news/feed/77a3d-blackrock-and-mastercard-turn-to-xrp-ledger-in-defi-power-play",
+      "score": 61,
+      "metrics": {
+        "FCP": 2094,
+        "LCP": 9281,
+        "TBT": 237,
+        "CLS": "0.140",
+        "SI": 4359
+      },
+      "validCount": 2,
+      "totalCount": 3
+    },
+    {
+      "url": "/upcoming-ico",
+      "score": 50,
+      "metrics": {
+        "FCP": 4757,
+        "LCP": 11077,
+        "TBT": 397,
+        "CLS": "0.063",
+        "SI": 6094
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/price/bitcoin",
+      "score": 54,
+      "metrics": {
+        "FCP": 12624,
+        "LCP": 16285,
+        "TBT": 2,
+        "CLS": "0.065",
+        "SI": 12624
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/token-unlock",
+      "score": 46,
+      "metrics": {
+        "FCP": 4722,
+        "LCP": 11507,
+        "TBT": 595,
+        "CLS": "0.022",
+        "SI": 6804
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/trending",
+      "score": 49,
+      "metrics": {
+        "FCP": 6027,
+        "LCP": 11699,
+        "TBT": 393,
+        "CLS": "0.003",
+        "SI": 7304
+      },
+      "validCount": 1,
+      "totalCount": 3
+    },
+    {
+      "url": "/plans",
+      "score": 65,
+      "metrics": {
+        "FCP": 2680,
+        "LCP": 11563,
+        "TBT": 265,
+        "CLS": "0.000",
+        "SI": 2704
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/gainers",
+      "score": 43,
+      "metrics": {
+        "FCP": 2170,
+        "LCP": 7467,
+        "TBT": 1422,
+        "CLS": "0.085",
+        "SI": 5290
+      },
+      "validCount": 2,
+      "totalCount": 3
+    }
+  ]
+}

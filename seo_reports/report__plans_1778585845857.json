@@ -1,0 +1,32 @@
+{
+  "url": "https://cryptorank.io/plans",
+  "timestamp": "2026-05-12T11:37:25.858Z",
+  "lighthouse": {
+    "score": 60,
+    "metrics": {
+      "FCP": 2683,
+      "LCP": 10054,
+      "TBT": 333,
+      "CLS": "0.000",
+      "SI": 6085
+    }
+  },
+  "seo": {
+    "statusCode": 200,
+    "title": "Gain Exclusive Access to Advanced Crypto Analytics and Features on CryptoRank. | CryptoRank.io",
+    "titleLength": 94,
+    "metaDescription": "Gain access to in-depth crypto analytics and premium tools with CryptoRank's subscription plans. Stay ahead in the crypto market, track investments, and make data-driven decisions with features designed for crypto enthusiasts.",
+    "metaDescriptionLength": 226,
+    "metaRobots": null,
+    "canonical": "https://cryptorank.io/plans",
+    "ogTitle": "Gain Exclusive Access to Advanced Crypto Analytics and Features on CryptoRank. | CryptoRank.io",
+    "ogDescription": "Gain access to in-depth crypto analytics and premium tools with CryptoRank's subscription plans. Stay ahead in the crypto market, track investments, and make data-driven decisions with features designed for crypto enthusiasts.",
+    "h1": "Explore Our Subscription Plans",
+    "h1Count": 1,
+    "h2Count": 2,
+    "h3Count": 4,
+    "h1List": [
+      "Explore Our Subscription Plans"
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                    📊 SEO АУДИТ САЙТА                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URL: https://cryptorank.io/
+📅 Дата: 22.04.2026, 11:44:17
+📅 Предыдущий аудит: —
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟡 Performance Score: 52/100
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 6485ms
+   • LCP (Largest Contentful Paint): 15307ms
+   • TBT (Total Blocking Time):      273ms
+   • CLS (Cumulative Layout Shift):  0.000
+   • SI  (Speed Index):              8376ms
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 SEO ЭЛЕМЕНТЫ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 HTTP Status: 200
+
+🏷️  Title (112 симв.):
+   "Cryptocurrency prices, Token rates and Altcoin charts ranked by Market Capitalization and Volume | CryptoRank.io"
+   ⚠️  Слишком длинный, обрежется в выдаче (норма: 30–60)
+
+📄 Meta Description (201 симв.):
+   "Cryptocurrency Market Capitalization ✔ Coin ratings and Token stats. Stay ahead of the market with in-depth token data, analytical charts, and expert insights to make informed crypto trading decisions!"
+   ⚠️  Слишком длинное (норма: 50–160)
+
+🔵 OG Title: Cryptocurrency prices, Token rates and Altcoin charts ranked by Market Capitalization and Volume | CryptoRank.io
+🔵 OG Description: Cryptocurrency Market Capitalization ✔ Coin ratings and Token stats. Stay ahead of the market with in-depth token data, analytical charts, and expert insights to make informed crypto trading decisions!
+
+🤖 Meta Robots: ❌ Не задан
+🔗 Canonical: https://cryptorank.io
+   ℹ️  Canonical указывает на другой URL
+
+📌 H1 (1 шт.):
+   "Crypto Market Insights and Analytics"
+   ✅ Один H1
+
+📊 Заголовки: H2: 25 | H3: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🟡 Сократить title до 60 символов
+2. 🟡 Сократить meta description до 160 символов
+3. 🔴 LCP 15307ms → нужно < 2500ms
+4. 🟡 TBT 273ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Аудит завершен
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

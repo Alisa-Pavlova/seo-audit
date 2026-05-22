@@ -1,0 +1,60 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                    📊 SEO АУДИТ САЙТА                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URL: https://cryptorank.io/funding-rounds
+📅 Дата: 02.04.2026, 12:10:04
+📅 Предыдущий аудит: —
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔴 Performance Score: 31/100
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 3507ms
+   • LCP (Largest Contentful Paint): 12994ms
+   • TBT (Total Blocking Time):      2919ms
+   • CLS (Cumulative Layout Shift):  0.027874
+   • SI  (Speed Index):              8138ms
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 SEO ЭЛЕМЕНТЫ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 HTTP Status: 200
+
+🏷️  Title (81 симв.):
+   "Crypto fundraising rounds in our most up-to-date venture database | CryptoRank.io"
+   ⚠️  Слишком длинный, обрежется в выдаче (норма: 30–60)
+
+📄 Meta Description (106 симв.):
+   "Smart Money and Fundraising: Early Funding Rounds by Institutional Investors and Funds for Crypto Startups"
+   ✅ Длина в норме
+
+🔵 OG Title: Crypto fundraising rounds in our most up-to-date venture database | CryptoRank.io
+🔵 OG Description: Smart Money and Fundraising: Early Funding Rounds by Institutional Investors and Funds for Crypto Startups
+
+🤖 Meta Robots: ❌ Не задан
+🔗 Canonical: https://cryptorank.io/funding-rounds
+
+📌 H1 (1 шт.):
+   "Recent Crypto Investments and Fundraising Rounds"
+   ✅ Один H1
+
+📊 Заголовки: H2: 5 | H3: 8
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🟡 Сократить title до 60 символов
+2. 🔴 LCP 12994ms → нужно < 2500ms
+3. 🟡 TBT 2919ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Аудит завершен
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

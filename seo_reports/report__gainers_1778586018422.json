@@ -1,0 +1,32 @@
+{
+  "url": "https://cryptorank.io/gainers",
+  "timestamp": "2026-05-12T11:40:18.423Z",
+  "lighthouse": {
+    "score": 46,
+    "metrics": {
+      "FCP": 2818,
+      "LCP": 4384,
+      "TBT": 2310,
+      "CLS": "0.002",
+      "SI": 7618
+    }
+  },
+  "seo": {
+    "statusCode": 200,
+    "title": "Top Gainers: Fastest Growing Crypto Tokens Today | CryptoRank.io",
+    "titleLength": 64,
+    "metaDescription": "List of the fastest-growing tokens over 24h, 7d, and 30d. Track price drivers, analyze token categories, and explore reasons behind market surges.",
+    "metaDescriptionLength": 146,
+    "metaRobots": null,
+    "canonical": "https://cryptorank.io/gainers",
+    "ogTitle": "Top Gainers: Fastest Growing Crypto Tokens Today | CryptoRank.io",
+    "ogDescription": "List of the fastest-growing tokens over 24h, 7d, and 30d. Track price drivers, analyze token categories, and explore reasons behind market surges.",
+    "h1": "Top Gainers: Fastest-Growing Cryptocurrencies",
+    "h1Count": 1,
+    "h2Count": 1,
+    "h3Count": 0,
+    "h1List": [
+      "Top Gainers: Fastest-Growing Cryptocurrencies"
+    ]
+  }
+}

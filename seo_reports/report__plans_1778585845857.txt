@@ -1,0 +1,61 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                    📊 SEO АУДИТ САЙТА                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URL: https://cryptorank.io/plans
+📅 Дата: 12.05.2026, 14:37:25
+📅 Предыдущий аудит: 22.04.2026, 12:11:32
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟡 Performance Score: 60/100 (▼ -5)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2683ms (▼ +3ms)
+   • LCP (Largest Contentful Paint): 10054ms (▲ -1509ms)
+   • TBT (Total Blocking Time):      333ms (▼ +68ms)
+   • CLS (Cumulative Layout Shift):  0.000 (→ без изменений)
+   • SI  (Speed Index):              6085ms (▼ +3381ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 SEO ЭЛЕМЕНТЫ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 HTTP Status: 200
+
+🏷️  Title (94 симв. (→ без изменений)):
+   "Gain Exclusive Access to Advanced Crypto Analytics and Features on CryptoRank. | CryptoRank.io"
+   ⚠️  Слишком длинный, обрежется в выдаче (норма: 30–60)
+
+📄 Meta Description (226 симв. (→ без изменений)):
+   "Gain access to in-depth crypto analytics and premium tools with CryptoRank's subscription plans. Stay ahead in the crypto market, track investments, and make data-driven decisions with features designed for crypto enthusiasts."
+   ⚠️  Слишком длинное (норма: 50–160)
+
+🔵 OG Title: Gain Exclusive Access to Advanced Crypto Analytics and Features on CryptoRank. | CryptoRank.io
+🔵 OG Description: Gain access to in-depth crypto analytics and premium tools with CryptoRank's subscription plans. Stay ahead in the crypto market, track investments, and make data-driven decisions with features designed for crypto enthusiasts.
+
+🤖 Meta Robots: ❌ Не задан
+🔗 Canonical: https://cryptorank.io/plans
+
+📌 H1 (1 шт. (→ без изменений)):
+   "Explore Our Subscription Plans"
+   ✅ Один H1
+
+📊 Заголовки: H2: 2 (→ без изменений) | H3: 4 (→ без изменений)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🟡 Сократить title до 60 символов
+2. 🟡 Сократить meta description до 160 символов
+3. 🔴 LCP 10054ms → нужно < 2500ms
+4. 🟡 TBT 333ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Аудит завершен
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

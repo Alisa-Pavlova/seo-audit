@@ -1,0 +1,61 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                    📊 SEO АУДИТ САЙТА                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URL: https://cryptorank.io/token-unlock
+📅 Дата: 12.05.2026, 14:31:57
+📅 Предыдущий аудит: 22.04.2026, 12:06:29
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔴 Performance Score: 49/100 (▲ +3)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 4124ms (▲ -598ms)
+   • LCP (Largest Contentful Paint): 10192ms (▲ -1315ms)
+   • TBT (Total Blocking Time):      596ms (▼ +1ms)
+   • CLS (Cumulative Layout Shift):  0.055 (▼ +33)
+   • SI  (Speed Index):              5518ms (▲ -1286ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 SEO ЭЛЕМЕНТЫ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 HTTP Status: 200
+
+🏷️  Title (85 симв. (→ без изменений)):
+   "Cryptocurrency Vesting: Tokens Unlock, Distribution Schedule Calendar | CryptoRank.io"
+   ⚠️  Слишком длинный, обрежется в выдаче (норма: 30–60)
+
+📄 Meta Description (291 симв. (→ без изменений)):
+   "Analyze the potential of an upcoming cryptocurrency vesting. Explore the number of unlocked and locked tokens, discover the size of the nearest unlocking, and stay informed about unlock dates. Optimize your asset management by utilizing key features such as filtering, search, and watchlist."
+   ⚠️  Слишком длинное (норма: 50–160)
+
+🔵 OG Title: Cryptocurrency Vesting: Tokens Unlock, Distribution Schedule Calendar | CryptoRank.io
+🔵 OG Description: Analyze the potential of an upcoming cryptocurrency vesting. Explore the number of unlocked and locked tokens, discover the size of the nearest unlocking, and stay informed about unlock dates. Optimize your asset management by utilizing key features such as filtering, search, and watchlist.
+
+🤖 Meta Robots: ❌ Не задан
+🔗 Canonical: https://cryptorank.io/token-unlock
+
+📌 H1 (1 шт. (→ без изменений)):
+   "Token Unlocks & Vesting"
+   ✅ Один H1
+
+📊 Заголовки: H2: 5 (→ без изменений) | H3: 10 (→ без изменений)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🟡 Сократить title до 60 символов
+2. 🟡 Сократить meta description до 160 символов
+3. 🔴 LCP 10192ms → нужно < 2500ms
+4. 🟡 TBT 596ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Аудит завершен
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

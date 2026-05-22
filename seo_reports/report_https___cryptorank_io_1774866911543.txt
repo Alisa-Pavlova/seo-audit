@@ -1,0 +1,61 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                    📊 SEO АУДИТ САЙТА                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URL: https://cryptorank.io
+📅 Дата: 30.03.2026, 13:35:11
+📅 Предыдущий аудит: —
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔴 Performance Score: 41/100
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 1707ms
+   • LCP (Largest Contentful Paint): 7427ms
+   • TBT (Total Blocking Time):      1472ms
+   • CLS (Cumulative Layout Shift):  0.004
+   • SI  (Speed Index):              8288ms
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 SEO ЭЛЕМЕНТЫ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 HTTP Status: 200
+
+🏷️  Title (112 симв.):
+   "Cryptocurrency prices, Token rates and Altcoin charts ranked by Market Capitalization and Volume | CryptoRank.io"
+   ⚠️  Слишком длинный, обрежется в выдаче (норма: 30–60)
+
+📄 Meta Description (201 симв.):
+   "Cryptocurrency Market Capitalization ✔ Coin ratings and Token stats. Stay ahead of the market with in-depth token data, analytical charts, and expert insights to make informed crypto trading decisions!"
+   ⚠️  Слишком длинное (норма: 50–160)
+
+🔵 OG Title: Cryptocurrency prices, Token rates and Altcoin charts ranked by Market Capitalization and Volume | CryptoRank.io
+🔵 OG Description: Cryptocurrency Market Capitalization ✔ Coin ratings and Token stats. Stay ahead of the market with in-depth token data, analytical charts, and expert insights to make informed crypto trading decisions!
+
+🤖 Meta Robots: ❌ Не задан
+🔗 Canonical: https://cryptorank.io
+
+📌 H1 (1 шт.):
+   "Crypto Market Insights and Analytics"
+   ✅ Один H1
+
+📊 Заголовки: H2: 25 | H3: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🟡 Сократить title до 60 символов
+2. 🟡 Сократить meta description до 160 символов
+3. 🔴 LCP 7427ms → нужно < 2500ms
+4. 🟡 TBT 1472ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Аудит завершен
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

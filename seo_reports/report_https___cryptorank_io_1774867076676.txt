@@ -1,0 +1,61 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                    📊 SEO АУДИТ САЙТА                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URL: https://cryptorank.io
+📅 Дата: 30.03.2026, 13:37:56
+📅 Предыдущий аудит: 30.03.2026, 13:36:53
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔴 Performance Score: 43/100 (▲ +43)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 6011ms (▼ +732ms)
+   • LCP (Largest Contentful Paint): 14812ms
+   • TBT (Total Blocking Time):      506ms (▲ -185ms)
+   • CLS (Cumulative Layout Shift):  0 (▲ -4)
+   • SI  (Speed Index):              11084ms (▲ -512ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 SEO ЭЛЕМЕНТЫ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 HTTP Status: 200
+
+🏷️  Title (112 симв. (→ без изменений)):
+   "Cryptocurrency prices, Token rates and Altcoin charts ranked by Market Capitalization and Volume | CryptoRank.io"
+   ⚠️  Слишком длинный, обрежется в выдаче (норма: 30–60)
+
+📄 Meta Description (201 симв. (→ без изменений)):
+   "Cryptocurrency Market Capitalization ✔ Coin ratings and Token stats. Stay ahead of the market with in-depth token data, analytical charts, and expert insights to make informed crypto trading decisions!"
+   ⚠️  Слишком длинное (норма: 50–160)
+
+🔵 OG Title: Cryptocurrency prices, Token rates and Altcoin charts ranked by Market Capitalization and Volume | CryptoRank.io
+🔵 OG Description: Cryptocurrency Market Capitalization ✔ Coin ratings and Token stats. Stay ahead of the market with in-depth token data, analytical charts, and expert insights to make informed crypto trading decisions!
+
+🤖 Meta Robots: ❌ Не задан
+🔗 Canonical: https://cryptorank.io
+
+📌 H1 (1 шт. (→ без изменений)):
+   "Crypto Market Insights and Analytics"
+   ✅ Один H1
+
+📊 Заголовки: H2: 25 (→ без изменений) | H3: 0 (→ без изменений)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🟡 Сократить title до 60 символов
+2. 🟡 Сократить meta description до 160 символов
+3. 🔴 LCP 14812ms → нужно < 2500ms
+4. 🟡 TBT 506ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Аудит завершен
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

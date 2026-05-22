@@ -1,0 +1,60 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                    📊 SEO АУДИТ САЙТА                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URL: https://cryptorank.io/funds
+📅 Дата: 22.04.2026, 11:55:11
+📅 Предыдущий аудит: —
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟡 Performance Score: 54/100
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 4764ms
+   • LCP (Largest Contentful Paint): 10757ms
+   • TBT (Total Blocking Time):      346ms
+   • CLS (Cumulative Layout Shift):  0.048
+   • SI  (Speed Index):              6031ms
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 SEO ЭЛЕМЕНТЫ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 HTTP Status: 200
+
+🏷️  Title (65 симв.):
+   "Crypto funds and investors in blockchain projects | CryptoRank.io"
+   ✅ Длина в норме
+
+📄 Meta Description (324 симв.):
+   "Explore a comprehensive list of top crypto funds and angel investors, complete with key metrics such as fund tier, latest investments, number of investments, ROI, focus area, preferred stage, and average rounds raised. Analyze up-to-date data to make informed decisions and maximize your cryptocurrency investment potential."
+   ⚠️  Слишком длинное (норма: 50–160)
+
+🔵 OG Title: Crypto funds and investors in blockchain projects | CryptoRank.io
+🔵 OG Description: Explore a comprehensive list of top crypto funds and angel investors, complete with key metrics such as fund tier, latest investments, number of investments, ROI, focus area, preferred stage, and average rounds raised. Analyze up-to-date data to make informed decisions and maximize your cryptocurrency investment potential.
+
+🤖 Meta Robots: ❌ Не задан
+🔗 Canonical: https://cryptorank.io/funds
+
+📌 H1 (1 шт.):
+   "Crypto Funds and Investors"
+   ✅ Один H1
+
+📊 Заголовки: H2: 5 | H3: 12
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🟡 Сократить meta description до 160 символов
+2. 🔴 LCP 10757ms → нужно < 2500ms
+3. 🟡 TBT 346ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Аудит завершен
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
