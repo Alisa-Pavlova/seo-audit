@@ -11,7 +11,6 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPORTS_DIR = path.join(__dirname, "seo_reports");
 
-// ------------------- 1. Lighthouse (настройки как у Google PSI) -------------------
 async function getLighthouseScore(url) {
   let chrome;
   try {
@@ -59,104 +58,6 @@ async function getLighthouseScore(url) {
   }
 }
 
-// ------------------- 2. HTTP запрос -------------------
-function fetchUrl(url, timeout = 15000) {
-  return new Promise((resolve, reject) => {
-    const parsedUrl = new URL(url);
-    const protocol = parsedUrl.protocol === "https:" ? https : http;
-
-    const options = {
-      hostname: parsedUrl.hostname,
-      port: parsedUrl.port,
-      path: parsedUrl.pathname + parsedUrl.search,
-      method: "GET",
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36",
-        Accept:
-          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
-      },
-      timeout,
-    };
-
-    const req = protocol.request(options, (res) => {
-      let data = "";
-      res.on("data", (chunk) => {
-        data += chunk;
-      });
-      res.on("end", () =>
-        resolve({ statusCode: res.statusCode, headers: res.headers, data }),
-      );
-    });
-
-    req.on("error", reject);
-    req.on("timeout", () => {
-      req.destroy();
-      reject(new Error(`Request timeout after ${timeout}ms`));
-    });
-    req.end();
-  });
-}
-
-// ------------------- 3. Парсинг HTML -------------------
-async function parseHtmlHeaders(url) {
-  try {
-    const response = await fetchUrl(url, 15000);
-
-    if (response.statusCode !== 200) {
-      throw new Error(`HTTP ${response.statusCode}`);
-    }
-
-    const dom = new JSDOM(response.data);
-    const document = dom.window.document;
-
-    const title = document.querySelector("title");
-    const titleText = title ? title.textContent.trim() : null;
-
-    const metaDesc = document.querySelector('meta[name="description"]');
-    const descText = metaDesc ? metaDesc.getAttribute("content").trim() : null;
-
-    const metaRobots = document.querySelector('meta[name="robots"]');
-    const robotsText = metaRobots
-      ? metaRobots.getAttribute("content").trim()
-      : null;
-
-    const canonical = document.querySelector('link[rel="canonical"]');
-    const canonicalUrl = canonical
-      ? canonical.getAttribute("href").trim()
-      : null;
-
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-
-    const h1Elements = document.querySelectorAll("h1");
-    const h2Elements = document.querySelectorAll("h2");
-    const h3Elements = document.querySelectorAll("h3");
-
-    return {
-      statusCode: response.statusCode,
-      title: titleText,
-      titleLength: titleText ? titleText.length : 0,
-      metaDescription: descText,
-      metaDescriptionLength: descText ? descText.length : 0,
-      metaRobots: robotsText,
-      canonical: canonicalUrl,
-      ogTitle: ogTitle ? ogTitle.getAttribute("content") : null,
-      ogDescription: ogDesc ? ogDesc.getAttribute("content") : null,
-      h1: h1Elements.length > 0 ? h1Elements[0].textContent.trim() : null,
-      h1Count: h1Elements.length,
-      h2Count: h2Elements.length,
-      h3Count: h3Elements.length,
-      h1List: Array.from(h1Elements).map((el) => el.textContent.trim()),
-    };
-  } catch (error) {
-    console.error("❌ Ошибка загрузки страницы:", error.message);
-    return { error: error.message };
-  }
-}
-
-// ------------------- 4. Загрузка предыдущего отчета -------------------
 async function loadPreviousReport(url) {
   try {
     const files = await fs.readdir(REPORTS_DIR);
@@ -177,7 +78,6 @@ async function loadPreviousReport(url) {
   }
 }
 
-// ------------------- 5. Генерация отчета -------------------
 function delta(current, previous, higherIsBetter = true) {
   if (previous === null || previous === undefined) return "";
   const diff = current - previous;
@@ -193,10 +93,10 @@ function deltaMs(current, previous) {
   if (diff === 0) return " (→ без изменений)";
   const sign = diff > 0 ? "+" : "";
   const good = diff < 0;
-  return ` (${good ? "▲" : "▼"} ${sign}${diff}ms)`;
+  return ` (${good ? "✅" : "❗️"} ${sign}${diff}ms)`;
 }
 
-function generateReport(url, lhResult, htmlData, prev) {
+function generateReport(url, lhResult, prev) {
   const timestamp = new Date().toLocaleString("ru-RU");
   const prevLh = prev?.lighthouse;
   const prevSeo = prev?.seo;
@@ -242,94 +142,6 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : "📅 Пре�
     report += `❌ Не удалось получить данные Lighthouse\n`;
   }
 
-  report += `
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📝 SEO ЭЛЕМЕНТЫ
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-`;
-
-  if (htmlData && !htmlData.error) {
-    report += `📡 HTTP Status: ${htmlData.statusCode}\n\n`;
-
-    // Title
-    if (!htmlData.title) {
-      report += `🏷️  Title: ❌ Отсутствует\n`;
-    } else {
-      const titleChange =
-        prevSeo?.title && prevSeo.title !== htmlData.title
-          ? " ⚡ изменился"
-          : "";
-      report += `🏷️  Title (${htmlData.titleLength} симв.${delta(
-        htmlData.titleLength,
-        prevSeo?.titleLength,
-      )}${titleChange}):\n`;
-      report += `   "${htmlData.title}"\n`;
-      if (htmlData.titleLength < 30)
-        report += `   ⚠️  Слишком короткий (норма: 30–60)\n`;
-      else if (htmlData.titleLength > 70)
-        report += `   ⚠️  Слишком длинный, обрежется в выдаче (норма: 30–60)\n`;
-      else report += `   ✅ Длина в норме\n`;
-    }
-
-    // Meta Description
-    report += `\n📄 Meta Description`;
-    if (!htmlData.metaDescription) {
-      report += `: ❌ Отсутствует\n`;
-    } else {
-      const descChange =
-        prevSeo?.metaDescription &&
-        prevSeo.metaDescription !== htmlData.metaDescription
-          ? " ⚡ изменилось"
-          : "";
-      report += ` (${htmlData.metaDescriptionLength} симв.${delta(
-        htmlData.metaDescriptionLength,
-        prevSeo?.metaDescriptionLength,
-      )}${descChange}):\n`;
-      report += `   "${htmlData.metaDescription}"\n`;
-      if (htmlData.metaDescriptionLength < 50)
-        report += `   ⚠️  Слишком короткое (норма: 50–160)\n`;
-      else if (htmlData.metaDescriptionLength > 160)
-        report += `   ⚠️  Слишком длинное (норма: 50–160)\n`;
-      else report += `   ✅ Длина в норме\n`;
-    }
-
-    // OG теги
-    report += `\n🔵 OG Title: ${htmlData.ogTitle || "❌ Не задан"}\n`;
-    report += `🔵 OG Description: ${htmlData.ogDescription || "❌ Не задан"}\n`;
-
-    // Robots & Canonical
-    report += `\n🤖 Meta Robots: ${htmlData.metaRobots || "❌ Не задан"}\n`;
-    report += `🔗 Canonical: ${htmlData.canonical || "❌ Не задан"}\n`;
-    if (htmlData.canonical && htmlData.canonical !== url) {
-      report += `   ℹ️  Canonical указывает на другой URL\n`;
-    }
-
-    // H1
-    report += `\n📌 H1 (${htmlData.h1Count} шт.${delta(htmlData.h1Count, prevSeo?.h1Count)}):\n`;
-    if (htmlData.h1Count === 0) {
-      report += `   ❌ Отсутствует\n`;
-    } else {
-      report += `   "${htmlData.h1}"\n`;
-      if (htmlData.h1Count > 1) {
-        report += `   ⚠️  Несколько H1: ${htmlData.h1List.join(" | ").substring(0, 200)}\n`;
-      } else {
-        report += `   ✅ Один H1\n`;
-      }
-      if (htmlData.title && htmlData.h1 === htmlData.title) {
-        report += `   ℹ️  H1 совпадает с Title — лучше разнообразить\n`;
-      }
-    }
-
-    // Структура заголовков
-    report += `\n📊 Заголовки: H2: ${htmlData.h2Count}${delta(htmlData.h2Count, prevSeo?.h2Count)} | H3: ${
-      htmlData.h3Count
-    }${delta(htmlData.h3Count, prevSeo?.h3Count)}\n`;
-    if (htmlData.h2Count === 0)
-      report += `   ⚠️  Нет H2 — добавьте для структуры контента\n`;
-  } else if (htmlData?.error) {
-    report += `❌ Не удалось загрузить страницу: ${htmlData.error}\n`;
-  }
-
   // Итоговые рекомендации
   report += `
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -338,24 +150,7 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : "📅 Пре�
 `;
 
   const tasks = [];
-  if (htmlData && !htmlData.error) {
-    if (!htmlData.title) tasks.push("🔴 Добавить <title>");
-    if (!htmlData.metaDescription) tasks.push("🟡 Добавить meta description");
-    if (htmlData.h1Count === 0) tasks.push("🔴 Добавить H1");
-    if (htmlData.h1Count > 1) tasks.push("🟡 Оставить один H1");
-    if (htmlData.titleLength > 70)
-      tasks.push("🟡 Сократить title до 60 символов");
-    if (htmlData.titleLength < 30 && htmlData.title)
-      tasks.push("🟡 Расширить title до 30–60 символов");
-    if (htmlData.metaDescriptionLength > 160)
-      tasks.push("🟡 Сократить meta description до 160 символов");
-    if (htmlData.metaDescriptionLength < 50 && htmlData.metaDescription)
-      tasks.push("🟡 Расширить meta description до 50–160 символов");
-    if (htmlData.h2Count === 0 && htmlData.h1Count > 0)
-      tasks.push("📑 Добавить H2 для структуры");
-    if (!htmlData.ogTitle) tasks.push("🔵 Добавить og:title");
-    if (!htmlData.ogDescription) tasks.push("🔵 Добавить og:description");
-  }
+
   if (lhResult) {
     if (lhResult.metrics.LCP > 2500)
       tasks.push(`🔴 LCP ${lhResult.metrics.LCP}ms → нужно < 2500ms`);
@@ -418,7 +213,7 @@ async function getAverageLighthouseScore(url, baseUrl) {
   }
 
   // Фильтруем ошибочные результаты (скор < 20 или > 95)
-  const validResults = results.filter((r) => r.score >= 20 && r.score <= 95);
+  const validResults = results.filter((r) => r.score >= 10 && r.score <= 100);
 
   if (validResults.length === 0) {
     console.log(`   ⚠️  Все результаты отсечены как ошибочные`);
@@ -605,16 +400,13 @@ async function runSeoAuditBatch(baseUrl) {
     console.log(`\n📍 Страница ${idx + 1}/${urls.length}: ${url}`);
     console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
-    console.log("📡 Анализ HTML структуры...");
-    const htmlData = await parseHtmlHeaders(fullUrl);
-
-    console.log("⚡ Запуск Lighthouse (3 попытки)...");
+    console.log("⚡ Запуск Lighthouse (3 запуска)...");
     const lhResult = await getAverageLighthouseScore(url, baseUrl);
 
     // Загружаем предыдущий отчет для сравнения
     const prev = await loadPreviousReport(url);
 
-    const report = generateReport(fullUrl, lhResult, htmlData, prev);
+    const report = generateReport(fullUrl, lhResult, prev);
     console.log(report);
 
     // Сохраняем
@@ -655,8 +447,14 @@ async function runSeoAuditBatch(baseUrl) {
   console.log(summaryReport);
 
   // Сохраняем итоговый отчет
-  const summaryTxtFilename = path.join(REPORTS_DIR, `audit_${dateStr}.txt`);
-  const summaryJsonFilename = path.join(REPORTS_DIR, `audit_${dateStr}.json`);
+  const summaryTxtFilename = path.join(
+    REPORTS_DIR,
+    `audit_${Date.now()}_${dateStr}.txt`,
+  );
+  const summaryJsonFilename = path.join(
+    REPORTS_DIR,
+    `audit_${Date.now()}_${dateStr}.json`,
+  );
 
   await fs.writeFile(summaryTxtFilename, summaryReport, "utf-8");
 

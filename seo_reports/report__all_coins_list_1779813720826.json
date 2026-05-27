@@ -1,0 +1,32 @@
+{
+  "url": "https://cryptorank.io/all-coins-list",
+  "timestamp": "2026-05-26T16:42:00.826Z",
+  "lighthouse": {
+    "score": 33,
+    "metrics": {
+      "FCP": 6654,
+      "LCP": 23500,
+      "TBT": 1372,
+      "CLS": "0.004",
+      "SI": 7722
+    }
+  },
+  "seo": {
+    "statusCode": 200,
+    "title": "All cryptocurrencies - Coin Market Capitalization list of all Crypto Currencies and prices | CryptoRank.io",
+    "titleLength": 106,
+    "metaDescription": "Live streaming prices and the market capitalization of all cryptocurrencies (Bitcoin, Ethereum, Litecoin and etc.). View and analyze more than 8000 cryptocurrencies!",
+    "metaDescriptionLength": 165,
+    "metaRobots": null,
+    "canonical": "https://cryptorank.io/all-coins-list",
+    "ogTitle": "All cryptocurrencies - Coin Market Capitalization list of all Crypto Currencies and prices | CryptoRank.io",
+    "ogDescription": "Live streaming prices and the market capitalization of all cryptocurrencies (Bitcoin, Ethereum, Litecoin and etc.). View and analyze more than 8000 cryptocurrencies!",
+    "h1": "All Cryptocurrencies",
+    "h1Count": 1,
+    "h2Count": 0,
+    "h3Count": 0,
+    "h1List": [
+      "All Cryptocurrencies"
+    ]
+  }
+}

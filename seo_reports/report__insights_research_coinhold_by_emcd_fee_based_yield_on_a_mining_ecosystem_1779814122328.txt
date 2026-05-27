@@ -1,0 +1,62 @@
+
+╔══════════════════════════════════════════════════════════════╗
+║                    📊 SEO АУДИТ САЙТА                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URL: https://cryptorank.io/insights/research/coinhold-by-emcd-fee-based-yield-on-a-mining-ecosystem
+📅 Дата: 26.05.2026, 19:48:42
+📅 Предыдущий аудит: 22.05.2026, 11:23:07
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ПРОИЗВОДИТЕЛЬНОСТЬ (Google PageSpeed Insights / mobile)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟡 Performance Score: 56/100 (▲ +1)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2936ms (▼ +101ms)
+   • LCP (Largest Contentful Paint): 7139ms (▲ -1713ms)
+   • TBT (Total Blocking Time):      250ms (▲ -55ms)
+   • CLS (Cumulative Layout Shift):  0.138 (▲ -25)
+   • SI  (Speed Index):              6126ms (▼ +1378ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+   ⚠️  CLS превышает норму
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 SEO ЭЛЕМЕНТЫ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 HTTP Status: 200
+
+🏷️  Title (55 симв.):
+   "Coinhold by EMCD: Fee-Based Yield on a Mining Ecosystem"
+   ✅ Длина в норме
+
+📄 Meta Description (155 симв.):
+   "Most CeFi yields rest on a single lending spread. Coinhold runs on four revenue streams, including fee income from a top-seven Bitcoin mining pool, and the"
+   ✅ Длина в норме
+
+🔵 OG Title: Coinhold by EMCD: Fee-Based Yield on a Mining Ecosystem |  | CryptoRank.io
+🔵 OG Description: Most CeFi yields rest on a single lending spread. Coinhold runs on four revenue streams, including fee income from a top-seven Bitcoin mining pool, and the
+
+🤖 Meta Robots: ❌ Не задан
+🔗 Canonical: https://cryptorank.io/insights/research/coinhold-by-emcd-fee-based-yield-on-a-mining-ecosystem
+
+📌 H1 (1 шт.):
+   "Coinhold by EMCD: Fee-Based Yield on a Mining Ecosystem"
+   ✅ Один H1
+   ℹ️  H1 совпадает с Title — лучше разнообразить
+
+📊 Заголовки: H2: 6 | H3: 4
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 🔴 LCP 7139ms → нужно < 2500ms
+2. 🟡 TBT 250ms → нужно < 200ms
+3. 🟡 CLS 0.138 → нужно < 0.1
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Аудит завершен
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
