@@ -546,11 +546,11 @@ async function runSeoAuditBatch(baseUrl: string): Promise<void> {
 
   const summaryTxtFilename = path.join(
     REPORTS_DIR,
-    `audit_${Date.now()}_${dateStr}.txt`,
+    `audit_${dateStr}_${Date.now()}.txt`,
   );
   const summaryJsonFilename = path.join(
     REPORTS_DIR,
-    `audit_${Date.now()}_${dateStr}.json`,
+    `audit_${dateStr}_${Date.now()}.json`,
   );
 
   await fs.writeFile(summaryTxtFilename, summaryReport, "utf-8");

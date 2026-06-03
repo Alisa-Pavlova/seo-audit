@@ -1,6 +1,6 @@
 # SEO Audit
 
-Инструмент для аудита SEO с использованием Lighthouse и парсингом HTML.
+Инструмент для аудита SEO с использованием Lighthouse.
 
 ## Установка
 
@@ -17,12 +17,13 @@ npm run audit
 или для конкретного домена:
 
 ```bash
-node seo.mjs https://example.com
+tsx seo.ts https://cryptorank.io
 ```
 
 ## Отчеты
 
 Отчеты сохраняются в папку `seo_reports/`:
+
 - `report_[page]_[timestamp].json` — структурированные данные
 - `report_[page]_[timestamp].txt` — читаемый отчет
-- `audit_[дата].json` и `audit_[дата].txt` — итоговые отчеты по всем страницам
+- `audit_[дата]_[timestamp].json` и `audit_[дата]_[timestamp].txt` — итоговые отчеты по всем страницам
