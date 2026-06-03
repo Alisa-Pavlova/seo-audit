@@ -1,0 +1,14 @@
+{
+  "url": "https://cryptorank.io/funds",
+  "timestamp": "2026-06-03T10:49:06.333Z",
+  "lighthouse": {
+    "score": 58,
+    "metrics": {
+      "FCP": 2281,
+      "LCP": 5208,
+      "TBT": 985,
+      "CLS": "0.000",
+      "SI": 4871
+    }
+  }
+}
