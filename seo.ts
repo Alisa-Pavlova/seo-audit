@@ -5,7 +5,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const REPORTS_DIR = path.join(__dirname, "seo_reports_bot");
+const REPORTS_DIR = path.join(__dirname, "seo_reports");
 
 interface LighthouseMetrics {
   FCP: number;
@@ -582,7 +582,7 @@ async function runSeoAuditBatch(baseUrl: string): Promise<void> {
     "utf-8",
   );
 
-  console.log(`\n💾 Все отчеты сохранены в ./seo_reports_bot/`);
+  console.log(`\n💾 Все отчеты сохранены в ./seo_reports/`);
   console.log(`📄 Итоговый отчет: audit_${dateStr}.txt`);
 }
 

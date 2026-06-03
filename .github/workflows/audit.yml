@@ -35,7 +35,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.githubusercontent.com"
           git config --local user.name "github-actions[bot]"
-          git add seo_reports_bot/
+          git add seo_reports/
           git diff --quiet && git diff --staged --quiet || (
             git commit -m "📊 Update SEO audit reports - $(date +'%Y-%m-%d %H:%M:%S')"
             git push
