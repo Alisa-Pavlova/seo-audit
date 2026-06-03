@@ -5,12 +5,16 @@
   "description": "SEO audit tool with Lighthouse and HTML parsing",
   "main": "seo.mjs",
   "scripts": {
-    "audit": "node seo.mjs https://cryptorank.io"
+    "audit": "tsx seo.ts https://cryptorank.io"
   },
   "dependencies": {
-    "chrome-launcher": "1.2.1",
-    "jsdom": "29.0.1",
-    "lighthouse": "13.0.3"
+    "chrome-launcher": "^1.1.0",
+    "jsdom": "^22.0.0",
+    "lighthouse": "^10.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0"
   },
   "engines": {
     "node": "18"

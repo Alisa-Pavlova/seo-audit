@@ -1,18 +1,81 @@
-import lighthouse from "lighthouse";
+import lighthouse, { type RunnerResult } from "lighthouse";
 import * as chromeLauncher from "chrome-launcher";
-import { JSDOM } from "jsdom";
 import { promises as fs } from "fs";
-import https from "https";
-import http from "http";
-import { URL } from "url";
 import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPORTS_DIR = path.join(__dirname, "seo_reports");
 
-async function getLighthouseScore(url) {
-  let chrome;
+interface LighthouseMetrics {
+  FCP: number;
+  LCP: number;
+  TBT: number;
+  CLS: number | string;
+  SI: number;
+}
+
+interface LighthouseScore {
+  score: number;
+  metrics: LighthouseMetrics;
+}
+
+interface AverageLighthouseScore extends LighthouseScore {
+  validCount: number;
+  totalCount: number;
+}
+
+interface PreviousReport {
+  timestamp: string;
+  lighthouse?: LighthouseScore | null;
+  seo?: unknown;
+}
+
+interface AuditResult {
+  url: string;
+  lhResult: AverageLighthouseScore | null;
+}
+
+interface TableRow {
+  url: string;
+  score: number | string;
+  lcp: number | string;
+  tbt: number | string;
+  cls: number | string;
+  status: string;
+}
+
+interface ColumnWidths {
+  url: number;
+  score: number;
+  lcp: number;
+  tbt: number;
+  cls: number;
+  status: number;
+}
+
+interface SummaryReportResult {
+  report: string;
+  dateStr: string;
+}
+
+interface SummaryJsonData {
+  timestamp: string;
+  baseUrl: string;
+  overallScore: number | null;
+  pages: Array<{
+    url: string;
+    score: number | null;
+    metrics: LighthouseMetrics | null;
+    validCount: number | null;
+    totalCount: number | null;
+  }>;
+}
+
+async function getLighthouseScore(
+  url: string,
+): Promise<LighthouseScore | null> {
+  let chrome: chromeLauncher.LaunchedChrome | undefined;
   try {
     chrome = await chromeLauncher.launch({
       chromeFlags: [
@@ -21,13 +84,12 @@ async function getLighthouseScore(url) {
         "--disable-dev-shm-usage",
       ],
     });
-    // throttlingMethod: 'simulate' — дефолт, именно его использует Google PSI
     const options = {
-      logLevel: "error",
-      output: "json",
+      logLevel: "error" as const,
+      output: "json" as const,
       port: chrome.port,
       onlyCategories: ["performance"],
-      formFactor: "mobile",
+      formFactor: "mobile" as const,
       screenEmulation: {
         mobile: true,
         width: 412,
@@ -37,48 +99,57 @@ async function getLighthouseScore(url) {
       },
     };
 
-    const runnerResult = await lighthouse(url, options);
+    const runnerResult = (await lighthouse(url, options)) as RunnerResult;
     const lhr = runnerResult.lhr;
 
     chrome.kill();
     return {
       score: Math.round(lhr.categories.performance.score * 100),
       metrics: {
-        FCP: Math.round(lhr.audits["first-contentful-paint"].numericValue),
-        LCP: Math.round(lhr.audits["largest-contentful-paint"].numericValue),
-        TBT: Math.round(lhr.audits["total-blocking-time"].numericValue),
-        CLS: lhr.audits["cumulative-layout-shift"].numericValue,
-        SI: Math.round(lhr.audits["speed-index"].numericValue),
+        FCP: Math.round(
+          lhr.audits["first-contentful-paint"].numericValue as number,
+        ),
+        LCP: Math.round(
+          lhr.audits["largest-contentful-paint"].numericValue as number,
+        ),
+        TBT: Math.round(
+          lhr.audits["total-blocking-time"].numericValue as number,
+        ),
+        CLS: lhr.audits["cumulative-layout-shift"].numericValue as number,
+        SI: Math.round(lhr.audits["speed-index"].numericValue as number),
       },
     };
   } catch (error) {
-    console.error("❌ Ошибка Lighthouse:", error.message);
+    console.error("❌ Ошибка Lighthouse:", (error as Error).message);
     if (chrome) chrome.kill();
     return null;
   }
 }
 
-async function loadPreviousReport(url) {
+async function loadPreviousReport(url: string): Promise<PreviousReport | null> {
   try {
     const files = await fs.readdir(REPORTS_DIR);
     const slug = url.replace(/[^a-z0-9]/gi, "_");
     const matching = files
       .filter((f) => f.startsWith(`report_${slug}_`) && f.endsWith(".json"))
       .sort()
-      .slice(-2); // берём последние два
+      .slice(-2);
 
     if (matching.length < 1) return null;
 
-    // Второй с конца — предыдущий (последний — это текущий, который ещё не сохранён)
     const prev = matching[matching.length - 1];
     const content = await fs.readFile(path.join(REPORTS_DIR, prev), "utf-8");
-    return JSON.parse(content);
+    return JSON.parse(content) as PreviousReport;
   } catch {
     return null;
   }
 }
 
-function delta(current, previous, higherIsBetter = true) {
+function delta(
+  current: number,
+  previous: number | undefined | null,
+  higherIsBetter: boolean = true,
+): string {
   if (previous === null || previous === undefined) return "";
   const diff = current - previous;
   if (diff === 0) return " (→ без изменений)";
@@ -87,7 +158,7 @@ function delta(current, previous, higherIsBetter = true) {
   return ` (${good ? "▲" : "▼"} ${sign}${diff})`;
 }
 
-function deltaMs(current, previous) {
+function deltaMs(current: number, previous: number | undefined | null): string {
   if (previous === null || previous === undefined) return "";
   const diff = current - previous;
   if (diff === 0) return " (→ без изменений)";
@@ -96,10 +167,13 @@ function deltaMs(current, previous) {
   return ` (${good ? "✅" : "❗️"} ${sign}${diff}ms)`;
 }
 
-function generateReport(url, lhResult, prev) {
+function generateReport(
+  url: string,
+  lhResult: LighthouseScore | null,
+  prev: PreviousReport | null,
+): string {
   const timestamp = new Date().toLocaleString("ru-RU");
   const prevLh = prev?.lighthouse;
-  const prevSeo = prev?.seo;
   const prevDate = prev
     ? new Date(prev.timestamp).toLocaleString("ru-RU")
     : null;
@@ -121,7 +195,7 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : "📅 Пре�
   if (lhResult) {
     const score = lhResult.score;
     const m = lhResult.metrics;
-    let emoji = score >= 90 ? "🟢" : score >= 50 ? "🟡" : "🔴";
+    const emoji = score >= 90 ? "🟢" : score >= 50 ? "🟡" : "🔴";
 
     report += `${emoji} Performance Score: ${score}/100${delta(score, prevLh?.score)}\n\n`;
     report += `   Core Web Vitals:\n`;
@@ -129,34 +203,36 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : "📅 Пре�
     report += `   • LCP (Largest Contentful Paint): ${m.LCP}ms${deltaMs(m.LCP, prevLh?.metrics?.LCP)}\n`;
     report += `   • TBT (Total Blocking Time):      ${m.TBT}ms${deltaMs(m.TBT, prevLh?.metrics?.TBT)}\n`;
     report += `   • CLS (Cumulative Layout Shift):  ${m.CLS}${deltaMs(
-      parseFloat(m.CLS) * 1000,
-      prevLh?.metrics ? parseFloat(prevLh.metrics.CLS) * 1000 : undefined,
+      parseFloat(m.CLS as unknown as string) * 1000,
+      prevLh?.metrics
+        ? parseFloat(prevLh.metrics.CLS as unknown as string) * 1000
+        : undefined,
     ).replace("ms", "")}\n`;
     report += `   • SI  (Speed Index):              ${m.SI}ms${deltaMs(m.SI, prevLh?.metrics?.SI)}\n`;
 
     report += `\n   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1\n`;
     if (m.LCP > 2500) report += `   ⚠️  LCP превышает норму\n`;
     if (m.TBT > 200) report += `   ⚠️  TBT превышает норму\n`;
-    if (parseFloat(m.CLS) > 0.1) report += `   ⚠️  CLS превышает норму\n`;
+    if (parseFloat(m.CLS as unknown as string) > 0.1)
+      report += `   ⚠️  CLS превышает норму\n`;
   } else {
     report += `❌ Не удалось получить данные Lighthouse\n`;
   }
 
-  // Итоговые рекомендации
   report += `
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ ПРИОРИТЕТНЫЕ ЗАДАЧИ
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 `;
 
-  const tasks = [];
+  const tasks: string[] = [];
 
   if (lhResult) {
     if (lhResult.metrics.LCP > 2500)
       tasks.push(`🔴 LCP ${lhResult.metrics.LCP}ms → нужно < 2500ms`);
     if (lhResult.metrics.TBT > 200)
       tasks.push(`🟡 TBT ${lhResult.metrics.TBT}ms → нужно < 200ms`);
-    if (parseFloat(lhResult.metrics.CLS) > 0.1)
+    if (parseFloat(lhResult.metrics.CLS as unknown as string) > 0.1)
       tasks.push(`🟡 CLS ${lhResult.metrics.CLS} → нужно < 0.1`);
   }
 
@@ -177,29 +253,30 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : "📅 Пре�
   return report;
 }
 
-// ------------------- 6. Сохранение JSON -------------------
-async function saveJsonReport(url, lhResult, htmlData, filename) {
+async function saveJsonReport(
+  url: string,
+  lhResult: LighthouseScore | null,
+  filename: string,
+): Promise<void> {
   const report = {
     url,
     timestamp: new Date().toISOString(),
     lighthouse: lhResult
       ? { score: lhResult.score, metrics: lhResult.metrics }
       : null,
-    seo:
-      htmlData && !htmlData.error
-        ? { ...htmlData }
-        : { error: htmlData?.error || "Unknown error" },
   };
   await fs.writeFile(filename, JSON.stringify(report, null, 2), "utf-8");
 }
 
-// ------------------- 7. Вспомогательные функции -------------------
-function delay(ms) {
+function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function getAverageLighthouseScore(url, baseUrl) {
-  const results = [];
+async function getAverageLighthouseScore(
+  url: string,
+  baseUrl: string,
+): Promise<AverageLighthouseScore | null> {
+  const results: LighthouseScore[] = [];
 
   for (let i = 0; i < 3; i++) {
     console.log(`   Попытка ${i + 1}/3...`);
@@ -208,11 +285,10 @@ async function getAverageLighthouseScore(url, baseUrl) {
       results.push(score);
     }
     if (i < 2) {
-      await delay(8000); // 8 секунд между попытками (чтобы не забанили)
+      await delay(8000);
     }
   }
 
-  // Фильтруем ошибочные результаты (скор < 20 или > 95)
   const validResults = results.filter((r) => r.score >= 10 && r.score <= 100);
 
   if (validResults.length === 0) {
@@ -220,13 +296,11 @@ async function getAverageLighthouseScore(url, baseUrl) {
     return null;
   }
 
-  // Считаем среднее
   const avgScore = Math.round(
     validResults.reduce((sum, r) => sum + r.score, 0) / validResults.length,
   );
 
-  // Усредняем метрики
-  const avgMetrics = {
+  const avgMetrics: LighthouseMetrics = {
     FCP: Math.round(
       validResults.reduce((sum, r) => sum + r.metrics.FCP, 0) /
         validResults.length,
@@ -240,8 +314,10 @@ async function getAverageLighthouseScore(url, baseUrl) {
         validResults.length,
     ),
     CLS: (
-      validResults.reduce((sum, r) => sum + parseFloat(r.metrics.CLS), 0) /
-      validResults.length
+      validResults.reduce(
+        (sum, r) => sum + parseFloat(r.metrics.CLS as unknown as string),
+        0,
+      ) / validResults.length
     ).toFixed(3),
     SI: Math.round(
       validResults.reduce((sum, r) => sum + r.metrics.SI, 0) /
@@ -257,7 +333,10 @@ async function getAverageLighthouseScore(url, baseUrl) {
   };
 }
 
-function generateSummaryReport(results, baseUrl) {
+function generateSummaryReport(
+  results: AuditResult[],
+  baseUrl: string,
+): SummaryReportResult {
   const now = new Date();
   const dateStr = `${String(now.getDate()).padStart(2, "0")}-${String(
     now.getMonth() + 1,
@@ -265,14 +344,13 @@ function generateSummaryReport(results, baseUrl) {
 
   const validScores = results
     .filter((r) => r.lhResult !== null)
-    .map((r) => r.lhResult.score);
+    .map((r) => r.lhResult!.score);
   const overallAvgScore =
     validScores.length > 0
       ? Math.round(validScores.reduce((a, b) => a + b, 0) / validScores.length)
       : 0;
 
-  // Подготовка данных для таблицы
-  const rows = results.map((r) => {
+  const rows: TableRow[] = results.map((r) => {
     const scoreEmoji =
       r.lhResult?.score >= 90 ? "🟢" : r.lhResult?.score >= 50 ? "🟡" : "🔴";
     return {
@@ -287,8 +365,7 @@ function generateSummaryReport(results, baseUrl) {
     };
   });
 
-  // Вычисление ширины столбцов
-  const colWidths = {
+  const colWidths: ColumnWidths = {
     url: Math.max(5, ...rows.map((r) => String(r.url).length)),
     score: Math.max(5, ...rows.map((r) => String(r.score).length)),
     lcp: Math.max(8, ...rows.map((r) => String(r.lcp).length)),
@@ -297,11 +374,11 @@ function generateSummaryReport(results, baseUrl) {
     status: Math.max(6, ...rows.map((r) => r.status.length)),
   };
 
-  // Функция для форматирования строки таблицы
-  const padRight = (str, width) => String(str).padEnd(width);
-  const padLeft = (str, width) => String(str).padStart(width);
+  const padRight = (str: string | number, width: number): string =>
+    String(str).padEnd(width);
+  const padLeft = (str: string | number, width: number): string =>
+    String(str).padStart(width);
 
-  // Построение разделителя
   const separator = `┌─${"-".repeat(colWidths.url)}─┬─${"-".repeat(colWidths.score)}─┬─${"-".repeat(
     colWidths.lcp,
   )}─┬─${"-".repeat(colWidths.tbt)}─┬─${"-".repeat(colWidths.cls)}─┬─${"-".repeat(colWidths.status)}─┐`;
@@ -312,10 +389,8 @@ function generateSummaryReport(results, baseUrl) {
     colWidths.lcp,
   )}─┴─${"-".repeat(colWidths.tbt)}─┴─${"-".repeat(colWidths.cls)}─┴─${"-".repeat(colWidths.status)}─┘`;
 
-  // Построение таблицы
-  let tableLines = [separator];
+  const tableLines: string[] = [separator];
 
-  // Заголовок
   tableLines.push(
     `│ ${padRight("URL", colWidths.url)} │ ${padLeft("Score", colWidths.score)} │ ${padLeft(
       "LCP (ms)",
@@ -327,7 +402,6 @@ function generateSummaryReport(results, baseUrl) {
   );
   tableLines.push(divider);
 
-  // Строки данных
   rows.forEach((r) => {
     tableLines.push(
       `│ ${padRight(r.url, colWidths.url)} │ ${padLeft(r.score, colWidths.score)} │ ${padLeft(
@@ -372,11 +446,10 @@ ${table}
   return { report, dateStr };
 }
 
-// ------------------- 8. Основная функция -------------------
-async function runSeoAuditBatch(baseUrl) {
+async function runSeoAuditBatch(baseUrl: string): Promise<void> {
   await fs.mkdir(REPORTS_DIR, { recursive: true });
 
-  const urls = [
+  const urls: string[] = [
     "",
     "/drophunting",
     "/funding-rounds",
@@ -391,7 +464,7 @@ async function runSeoAuditBatch(baseUrl) {
     "/gainers",
   ];
 
-  const results = [];
+  const results: AuditResult[] = [];
 
   for (let idx = 0; idx < urls.length; idx++) {
     const url = urls[idx];
@@ -403,13 +476,11 @@ async function runSeoAuditBatch(baseUrl) {
     console.log("⚡ Запуск Lighthouse (3 запуска)...");
     const lhResult = await getAverageLighthouseScore(url, baseUrl);
 
-    // Загружаем предыдущий отчет для сравнения
     const prev = await loadPreviousReport(url);
 
     const report = generateReport(fullUrl, lhResult, prev);
     console.log(report);
 
-    // Сохраняем
     const slug = url.replace(/[^a-z0-9]/gi, "_");
     const auditTimestamp = Date.now();
     const txtFilename = path.join(
@@ -422,18 +493,16 @@ async function runSeoAuditBatch(baseUrl) {
     );
 
     await fs.writeFile(txtFilename, report, "utf-8");
-    await saveJsonReport(fullUrl, lhResult, htmlData, jsonFilename);
+    await saveJsonReport(fullUrl, lhResult, jsonFilename);
 
-    results.push({ url, lhResult, htmlData });
+    results.push({ url, lhResult });
 
-    // Задержка перед следующей страницей
     if (idx < urls.length - 1) {
       console.log("⏳ Пауза перед следующей страницей (15 сек)...");
       await delay(15000);
     }
   }
 
-  // Генерируем итоговый отчет
   console.log(
     "\n\n═══════════════════════════════════════════════════════════",
   );
@@ -446,7 +515,6 @@ async function runSeoAuditBatch(baseUrl) {
   );
   console.log(summaryReport);
 
-  // Сохраняем итоговый отчет
   const summaryTxtFilename = path.join(
     REPORTS_DIR,
     `audit_${Date.now()}_${dateStr}.txt`,
@@ -458,7 +526,7 @@ async function runSeoAuditBatch(baseUrl) {
 
   await fs.writeFile(summaryTxtFilename, summaryReport, "utf-8");
 
-  const summaryJsonData = {
+  const summaryJsonData: SummaryJsonData = {
     timestamp: new Date().toISOString(),
     baseUrl,
     overallScore:
@@ -466,7 +534,7 @@ async function runSeoAuditBatch(baseUrl) {
         ? Math.round(
             results
               .filter((r) => r.lhResult)
-              .map((r) => r.lhResult.score)
+              .map((r) => r.lhResult!.score)
               .reduce((a, b) => a + b, 0) /
               results.filter((r) => r.lhResult).length,
           )
@@ -489,6 +557,5 @@ async function runSeoAuditBatch(baseUrl) {
   console.log(`📄 Итоговый отчет: audit_${dateStr}.txt`);
 }
 
-// ------------------- 9. Запуск -------------------
 const baseUrl = process.argv[2] || "https://cryptorank.io";
 runSeoAuditBatch(baseUrl).catch(console.error);
