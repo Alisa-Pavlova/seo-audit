@@ -1,0 +1,51 @@
+name: 📊 SEO Audit
+
+on:
+  schedule:
+    # Запускается каждый день в 10:00 UTC (12:00 московского времени)
+    - cron: '0 10 * * *'
+  workflow_dispatch:  # Можно запустить вручную из GitHub
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # Разрешение на коммит результатов
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 📚 Install dependencies
+        run: npm install
+
+      - name: 🚀 Run SEO audit
+        run: npm run audit
+        timeout-minutes: 30
+
+      - name: 💾 Commit and push reports
+        run: |
+          git config --local user.email "github-actions[bot]@users.githubusercontent.com"
+          git config --local user.name "github-actions[bot]"
+          git add seo_reports/
+          git diff --quiet && git diff --staged --quiet || (
+            git commit -m "📊 Update SEO audit reports - $(date +'%Y-%m-%d %H:%M:%S')"
+            git push
+          )
+
+      - name: 📧 Upload reports as artifact
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: seo-reports
+          path: seo_reports/
+          retention-days: 30
