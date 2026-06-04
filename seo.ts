@@ -7,6 +7,27 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPORTS_DIR = path.join(__dirname, "seo_reports");
 
+const SI_THRESHOLD = 15000; // 15 seconds
+const LCP_THRESHOLD = 15000; // 15 seconds
+const FCP_THRESHOLD = 10000; // 10 seconds
+const TBT_THRESHOLD = 3000; // 3 seconds
+
+const URLS: string[] = [
+  "",
+  "/drophunting",
+  "/funding-rounds",
+  "/all-coins-list",
+  "/funds",
+  "/insights/research/coinhold-by-emcd-fee-based-yield-on-a-mining-ecosystem",
+  "/upcoming-ico",
+  "/price/bitcoin",
+  "/token-unlock",
+  "/trending",
+  "/plans",
+  "/gainers",
+  "/charts/altcoin-index",
+];
+
 interface LighthouseMetrics {
   FCP: number;
   LCP: number;
@@ -104,7 +125,7 @@ async function getLighthouseScore(
 
     chrome.kill();
     return {
-      score: Math.round(lhr.categories.performance.score * 100),
+      score: Math.round((lhr.categories.performance.score || 0) * 100),
       metrics: {
         FCP: Math.round(
           lhr.audits["first-contentful-paint"].numericValue as number,
@@ -262,11 +283,6 @@ function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-const SI_THRESHOLD = 10000; // 10 seconds
-const LCP_THRESHOLD = 10000; // 10 seconds
-const FCP_THRESHOLD = 8000; // 8 seconds
-const TBT_THRESHOLD = 3000; // 3 seconds
-
 function getMetricsOutlierInfo(metrics: LighthouseMetrics): {
   isOutlier: boolean;
   details: string;
@@ -381,7 +397,11 @@ function generateSummaryReport(
 
   const rows: TableRow[] = results.map((r) => {
     const scoreEmoji =
-      r.lhResult?.score >= 90 ? "🟢" : r.lhResult?.score >= 50 ? "🟡" : "🔴";
+      (r.lhResult?.score || 0) >= 90
+        ? "🟢"
+        : (r.lhResult?.score || 0) >= 50
+          ? "🟡"
+          : "🔴";
     return {
       url: r.url.length > 30 ? r.url.substring(0, 27) + "..." : r.url,
       score: r.lhResult?.score ?? "N/A",
@@ -478,29 +498,13 @@ ${table}
 async function runSeoAuditBatch(baseUrl: string): Promise<void> {
   await fs.mkdir(REPORTS_DIR, { recursive: true });
 
-  const urls: string[] = [
-    "",
-    "/drophunting",
-    "/funding-rounds",
-    "/all-coins-list",
-    "/funds",
-    "/insights/research/coinhold-by-emcd-fee-based-yield-on-a-mining-ecosystem",
-    "/upcoming-ico",
-    "/price/bitcoin",
-    "/token-unlock",
-    "/trending",
-    "/plans",
-    "/gainers",
-    "/charts/altcoin-index",
-  ];
-
   const results: AuditResult[] = [];
 
-  for (let idx = 0; idx < urls.length; idx++) {
-    const url = urls[idx];
+  for (let idx = 0; idx < URLS.length; idx++) {
+    const url = URLS[idx];
     const fullUrl = baseUrl + url;
 
-    console.log(`\n📍 Страница ${idx + 1}/${urls.length}: ${url || "/"}`);
+    console.log(`\n📍 Страница ${idx + 1}/${URLS.length}: ${url || "/"}`);
 
     console.log("⚡ Запуск Lighthouse...");
     const lhResult = await getAverageLighthouseScore(url, baseUrl);
@@ -526,7 +530,7 @@ async function runSeoAuditBatch(baseUrl: string): Promise<void> {
 
     results.push({ url, lhResult });
 
-    if (idx < urls.length - 1) {
+    if (idx < URLS.length - 1) {
       console.log("⏳ Пауза перед следующей страницей (15 сек)...");
       await delay(15000);
     }
