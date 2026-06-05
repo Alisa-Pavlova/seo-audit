@@ -1,0 +1,14 @@
+{
+  "url": "https://cryptorank.io/trending",
+  "timestamp": "2026-06-05T12:41:13.023Z",
+  "lighthouse": {
+    "score": 65,
+    "metrics": {
+      "FCP": 2283,
+      "LCP": 3398,
+      "TBT": 1004,
+      "CLS": "0.003",
+      "SI": 4241
+    }
+  }
+}
