@@ -1,0 +1,14 @@
+{
+  "url": "https://cryptorank.io/gainers",
+  "timestamp": "2026-06-19T07:20:54.898Z",
+  "lighthouse": {
+    "score": 57,
+    "metrics": {
+      "FCP": 2291,
+      "LCP": 3416,
+      "TBT": 2801,
+      "CLS": "0.001",
+      "SI": 5074
+    }
+  }
+}
