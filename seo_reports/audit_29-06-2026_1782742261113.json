@@ -1,0 +1,176 @@
+{
+  "timestamp": "2026-06-29T14:11:01.113Z",
+  "baseUrl": "https://cryptorank.io",
+  "overallScore": 65,
+  "pages": [
+    {
+      "url": "",
+      "score": 56,
+      "metrics": {
+        "FCP": 3192,
+        "LCP": 6540,
+        "TBT": 756,
+        "CLS": "0.004",
+        "SI": 7832
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/drophunting",
+      "score": 68,
+      "metrics": {
+        "FCP": 2158,
+        "LCP": 3633,
+        "TBT": 656,
+        "CLS": "0.002",
+        "SI": 4888
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/funding-rounds",
+      "score": 72,
+      "metrics": {
+        "FCP": 2129,
+        "LCP": 3779,
+        "TBT": 541,
+        "CLS": "0.000",
+        "SI": 3693
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/all-coins-list",
+      "score": 60,
+      "metrics": {
+        "FCP": 2432,
+        "LCP": 3832,
+        "TBT": 1073,
+        "CLS": "0.014",
+        "SI": 4876
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/funds",
+      "score": 70,
+      "metrics": {
+        "FCP": 2140,
+        "LCP": 4440,
+        "TBT": 468,
+        "CLS": "0.000",
+        "SI": 4026
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/insights/research/coinhold-by-emcd-fee-based-yield-on-a-mining-ecosystem",
+      "score": 56,
+      "metrics": {
+        "FCP": 2131,
+        "LCP": 8379,
+        "TBT": 288,
+        "CLS": "0.187",
+        "SI": 4404
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/upcoming-ico",
+      "score": 71,
+      "metrics": {
+        "FCP": 2133,
+        "LCP": 3869,
+        "TBT": 506,
+        "CLS": "0.000",
+        "SI": 4481
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/price/bitcoin",
+      "score": 61,
+      "metrics": {
+        "FCP": 2758,
+        "LCP": 4208,
+        "TBT": 650,
+        "CLS": "0.055",
+        "SI": 5055
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/token-unlock",
+      "score": 56,
+      "metrics": {
+        "FCP": 2134,
+        "LCP": 4936,
+        "TBT": 823,
+        "CLS": "0.058",
+        "SI": 5501
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/trending",
+      "score": 73,
+      "metrics": {
+        "FCP": 1993,
+        "LCP": 4218,
+        "TBT": 413,
+        "CLS": "0.002",
+        "SI": 4021
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/plans",
+      "score": 72,
+      "metrics": {
+        "FCP": 2095,
+        "LCP": 5693,
+        "TBT": 287,
+        "CLS": "0.000",
+        "SI": 2095
+      },
+      "validCount": 3,
+      "totalCount": 3
+    },
+    {
+      "url": "/gainers",
+      "score": 58,
+      "metrics": {
+        "FCP": 2289,
+        "LCP": 3189,
+        "TBT": 2725,
+        "CLS": "0.001",
+        "SI": 5204
+      },
+      "validCount": 1,
+      "totalCount": 4
+    },
+    {
+      "url": "/charts/altcoin-index",
+      "score": 68,
+      "metrics": {
+        "FCP": 2276,
+        "LCP": 3851,
+        "TBT": 519,
+        "CLS": "0.002",
+        "SI": 5533
+      },
+      "validCount": 3,
+      "totalCount": 3
+    }
+  ]
+}
