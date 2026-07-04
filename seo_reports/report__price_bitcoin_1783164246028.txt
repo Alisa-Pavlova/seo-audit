@@ -1,0 +1,29 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io/price/bitcoin
+📅 Дата: 04.07.2026, 11:24:06
+📅 Предыдущий аудит: 03.07.2026, 12:07:09
+
+
+🟡 Performance Score: 55/100 (▼ -1)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2595ms (✅ -16ms)
+   • LCP (Largest Contentful Paint): 4995ms (❗️ +284ms)
+   • TBT (Total Blocking Time):      529ms (✅ -145ms)
+   • CLS (Cumulative Layout Shift):  0.165 (❗️ +49)
+   • SI  (Speed Index):              4562ms (❗️ +133ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+   ⚠️  CLS превышает норму
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+1. 🔴 LCP 4995ms → нужно < 2500ms
+2. 🟡 TBT 529ms → нужно < 200ms
+3. 🟡 CLS 0.165 → нужно < 0.1
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
