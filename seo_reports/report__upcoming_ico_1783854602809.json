@@ -1,0 +1,14 @@
+{
+  "url": "https://cryptorank.io/upcoming-ico",
+  "timestamp": "2026-07-12T11:10:02.809Z",
+  "lighthouse": {
+    "score": 65,
+    "metrics": {
+      "FCP": 2127,
+      "LCP": 4077,
+      "TBT": 496,
+      "CLS": "0.103",
+      "SI": 4845
+    }
+  }
+}

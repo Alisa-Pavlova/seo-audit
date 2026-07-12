@@ -1,0 +1,27 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io/all-coins-list
+📅 Дата: 12.07.2026, 11:06:37
+📅 Предыдущий аудит: 11.07.2026, 10:55:55
+
+
+🟡 Performance Score: 56/100 (▲ +8)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2457ms (✅ -409ms)
+   • LCP (Largest Contentful Paint): 4432ms (✅ -3581ms)
+   • TBT (Total Blocking Time):      1188ms (❗️ +74ms)
+   • CLS (Cumulative Layout Shift):  0.042 (❗️ +15)
+   • SI  (Speed Index):              4063ms (✅ -787ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+1. 🔴 LCP 4432ms → нужно < 2500ms
+2. 🟡 TBT 1188ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
