@@ -1,0 +1,27 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io/token-unlock
+📅 Дата: 13.07.2026, 12:34:08
+📅 Предыдущий аудит: 12.07.2026, 11:12:38
+
+
+🟡 Performance Score: 71/100 (▲ +19)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2128ms (✅ -3ms)
+   • LCP (Largest Contentful Paint): 4618ms (✅ -1502ms)
+   • TBT (Total Blocking Time):      352ms (✅ -448ms)
+   • CLS (Cumulative Layout Shift):  0.047 (→ без изменений)
+   • SI  (Speed Index):              5982ms (❗️ +92ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+1. 🔴 LCP 4618ms → нужно < 2500ms
+2. 🟡 TBT 352ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
