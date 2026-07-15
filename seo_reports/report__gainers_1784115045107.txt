@@ -1,0 +1,27 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io/gainers
+📅 Дата: 15.07.2026, 11:30:45
+📅 Предыдущий аудит: 14.07.2026, 11:28:17
+
+
+🟡 Performance Score: 61/100
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2313ms
+   • LCP (Largest Contentful Paint): 3263ms
+   • TBT (Total Blocking Time):      1436ms
+   • CLS (Cumulative Layout Shift):  0.012
+   • SI  (Speed Index):              5029ms
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+1. 🔴 LCP 3263ms → нужно < 2500ms
+2. 🟡 TBT 1436ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
