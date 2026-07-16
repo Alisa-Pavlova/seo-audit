@@ -1,0 +1,27 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io/upcoming-ico
+📅 Дата: 16.07.2026, 11:31:35
+📅 Предыдущий аудит: 15.07.2026, 11:25:47
+
+
+🟡 Performance Score: 72/100 (▼ -9)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2124ms (✅ -33ms)
+   • LCP (Largest Contentful Paint): 3574ms (❗️ +646ms)
+   • TBT (Total Blocking Time):      579ms (❗️ +341ms)
+   • CLS (Cumulative Layout Shift):  0.000 (✅ -88)
+   • SI  (Speed Index):              4155ms (✅ -405ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+1. 🔴 LCP 3574ms → нужно < 2500ms
+2. 🟡 TBT 579ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
