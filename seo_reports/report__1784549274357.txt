@@ -1,0 +1,27 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io
+📅 Дата: 20.07.2026, 12:07:54
+📅 Предыдущий аудит: 19.07.2026, 11:09:27
+
+
+🟡 Performance Score: 65/100 (▲ +7)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2272ms (❗️ +141ms)
+   • LCP (Largest Contentful Paint): 4572ms (❗️ +641ms)
+   • TBT (Total Blocking Time):      403ms (✅ -231ms)
+   • CLS (Cumulative Layout Shift):  0.005 (✅ -170)
+   • SI  (Speed Index):              7544ms (❗️ +3097ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+1. 🔴 LCP 4572ms → нужно < 2500ms
+2. 🟡 TBT 403ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
