@@ -1,0 +1,27 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io/insights/research/coinhold-by-emcd-fee-based-yield-on-a-mining-ecosystem
+📅 Дата: 04.08.2026, 11:59:16
+📅 Предыдущий аудит: 03.08.2026, 12:53:26
+
+
+🟡 Performance Score: 61/100 (▲ +3)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2128ms (✅ -45ms)
+   • LCP (Largest Contentful Paint): 9242ms (✅ -924ms)
+   • TBT (Total Blocking Time):      303ms (✅ -54ms)
+   • CLS (Cumulative Layout Shift):  0.065 (✅ -32)
+   • SI  (Speed Index):              5296ms (✅ -617ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+1. 🔴 LCP 9242ms → нужно < 2500ms
+2. 🟡 TBT 303ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

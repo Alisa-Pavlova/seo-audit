@@ -1,0 +1,14 @@
+{
+  "url": "https://cryptorank.io/plans",
+  "timestamp": "2026-08-04T12:04:50.752Z",
+  "lighthouse": {
+    "score": 64,
+    "metrics": {
+      "FCP": 2214,
+      "LCP": 8131,
+      "TBT": 337,
+      "CLS": "0.000",
+      "SI": 3709
+    }
+  }
+}

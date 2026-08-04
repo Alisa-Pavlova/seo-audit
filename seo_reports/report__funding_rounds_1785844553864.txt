@@ -1,0 +1,27 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io/funding-rounds
+📅 Дата: 04.08.2026, 11:55:53
+📅 Предыдущий аудит: 03.08.2026, 12:50:00
+
+
+🟡 Performance Score: 71/100 (▼ -9)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2274ms (✅ -49ms)
+   • LCP (Largest Contentful Paint): 3774ms (❗️ +451ms)
+   • TBT (Total Blocking Time):      589ms (❗️ +295ms)
+   • CLS (Cumulative Layout Shift):  0.000 (✅ -24)
+   • SI  (Speed Index):              3120ms (✅ -1495ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+1. 🔴 LCP 3774ms → нужно < 2500ms
+2. 🟡 TBT 589ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
