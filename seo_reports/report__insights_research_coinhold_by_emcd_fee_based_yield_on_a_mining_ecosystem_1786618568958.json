@@ -1,0 +1,14 @@
+{
+  "url": "https://cryptorank.io/insights/research/coinhold-by-emcd-fee-based-yield-on-a-mining-ecosystem",
+  "timestamp": "2026-08-13T10:56:08.958Z",
+  "lighthouse": {
+    "score": 66,
+    "metrics": {
+      "FCP": 2127,
+      "LCP": 8555,
+      "TBT": 195,
+      "CLS": "0.035",
+      "SI": 5170
+    }
+  }
+}
