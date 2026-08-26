@@ -1,0 +1,14 @@
+{
+  "url": "https://cryptorank.io/price/bitcoin",
+  "timestamp": "2026-08-26T10:30:19.026Z",
+  "lighthouse": {
+    "score": 47,
+    "metrics": {
+      "FCP": 2857,
+      "LCP": 5552,
+      "TBT": 1380,
+      "CLS": "0.046",
+      "SI": 4563
+    }
+  }
+}
