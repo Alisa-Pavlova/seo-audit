@@ -1,0 +1,27 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io/plans
+📅 Дата: 05.09.2026, 13:16:07
+📅 Предыдущий аудит: 04.09.2026, 14:02:44
+
+
+🟡 Performance Score: 65/100 (▲ +5)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2158ms (✅ -1ms)
+   • LCP (Largest Contentful Paint): 6205ms (✅ -521ms)
+   • TBT (Total Blocking Time):      488ms (✅ -31ms)
+   • CLS (Cumulative Layout Shift):  0.000 (→ без изменений)
+   • SI  (Speed Index):              4191ms (✅ -425ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+1. 🔴 LCP 6205ms → нужно < 2500ms
+2. 🟡 TBT 488ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
