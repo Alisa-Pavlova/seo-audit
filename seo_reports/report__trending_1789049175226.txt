@@ -1,0 +1,27 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io/trending
+📅 Дата: 10.09.2026, 14:06:15
+📅 Предыдущий аудит: 09.09.2026, 14:10:41
+
+
+🟡 Performance Score: 69/100 (▼ -7)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2143ms (✅ -10ms)
+   • LCP (Largest Contentful Paint): 3859ms (❗️ +214ms)
+   • TBT (Total Blocking Time):      662ms (❗️ +211ms)
+   • CLS (Cumulative Layout Shift):  0.003 (❗️ +1)
+   • SI  (Speed Index):              3499ms (❗️ +20ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+1. 🔴 LCP 3859ms → нужно < 2500ms
+2. 🟡 TBT 662ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
