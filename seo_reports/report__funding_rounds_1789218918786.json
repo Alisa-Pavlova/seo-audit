@@ -1,0 +1,14 @@
+{
+  "url": "https://cryptorank.io/funding-rounds",
+  "timestamp": "2026-09-12T13:15:18.788Z",
+  "lighthouse": {
+    "score": 84,
+    "metrics": {
+      "FCP": 935,
+      "LCP": 2763,
+      "TBT": 475,
+      "CLS": "0.000",
+      "SI": 935
+    }
+  }
+}
