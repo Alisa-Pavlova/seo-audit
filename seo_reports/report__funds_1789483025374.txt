@@ -1,0 +1,25 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io/funds
+📅 Дата: 15.09.2026, 14:37:05
+📅 Предыдущий аудит: 14.09.2026, 16:07:16
+
+
+🟢 Performance Score: 92/100 (▲ +5)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 964ms (❗️ +45ms)
+   • LCP (Largest Contentful Paint): 2326ms (✅ -401ms)
+   • TBT (Total Blocking Time):      260ms (✅ -121ms)
+   • CLS (Cumulative Layout Shift):  0.000 (→ без изменений)
+   • SI  (Speed Index):              994ms (❗️ +75ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  TBT превышает норму
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+1. 🟡 TBT 260ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
