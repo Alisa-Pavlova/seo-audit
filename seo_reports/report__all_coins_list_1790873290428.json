@@ -1,0 +1,14 @@
+{
+  "url": "https://cryptorank.io/all-coins-list",
+  "timestamp": "2026-10-01T16:48:10.429Z",
+  "lighthouse": {
+    "score": 65,
+    "metrics": {
+      "FCP": 2708,
+      "LCP": 4024,
+      "TBT": 567,
+      "CLS": "0.011",
+      "SI": 5043
+    }
+  }
+}
