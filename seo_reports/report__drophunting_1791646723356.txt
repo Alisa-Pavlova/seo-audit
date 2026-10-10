@@ -1,0 +1,23 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io/drophunting
+📅 Дата: 10.10.2026, 15:38:43
+📅 Предыдущий аудит: 09.10.2026, 16:41:32
+
+
+🟢 Performance Score: 95/100 (▲ +10)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 942ms (✅ -14ms)
+   • LCP (Largest Contentful Paint): 2309ms (✅ -474ms)
+   • TBT (Total Blocking Time):      167ms (✅ -283ms)
+   • CLS (Cumulative Layout Shift):  0.000 (→ без изменений)
+   • SI  (Speed Index):              942ms (✅ -43ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
