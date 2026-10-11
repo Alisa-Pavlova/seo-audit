@@ -1,0 +1,14 @@
+{
+  "url": "https://cryptorank.io/token-unlock",
+  "timestamp": "2026-10-11T16:09:24.447Z",
+  "lighthouse": {
+    "score": 96,
+    "metrics": {
+      "FCP": 933,
+      "LCP": 1943,
+      "TBT": 163,
+      "CLS": "0.000",
+      "SI": 933
+    }
+  }
+}
