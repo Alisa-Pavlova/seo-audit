@@ -1,0 +1,27 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 URL: https://cryptorank.io/charts/altcoin-index
+📅 Дата: 12.10.2026, 19:42:40
+📅 Предыдущий аудит: 11.10.2026, 16:13:26
+
+
+🟡 Performance Score: 70/100 (▼ -10)
+
+   Core Web Vitals:
+   • FCP (First Contentful Paint): 2378ms (❗️ +12ms)
+   • LCP (Largest Contentful Paint): 3158ms (✅ -243ms)
+   • TBT (Total Blocking Time):      637ms (❗️ +363ms)
+   • CLS (Cumulative Layout Shift):  0.022 (→ без изменений)
+   • SI  (Speed Index):              5585ms (❗️ +668ms)
+
+   Порог Google: LCP < 2500ms, TBT < 200ms, CLS < 0.1
+   ⚠️  LCP превышает норму
+   ⚠️  TBT превышает норму
+
+
+ ПРИОРИТЕТНЫЕ ЗАДАЧИ
+
+1. 🔴 LCP 3158ms → нужно < 2500ms
+2. 🟡 TBT 637ms → нужно < 200ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
