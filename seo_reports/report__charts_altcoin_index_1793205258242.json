@@ -1,0 +1,14 @@
+{
+  "url": "https://cryptorank.io/charts/altcoin-index",
+  "timestamp": "2026-10-28T16:34:18.243Z",
+  "lighthouse": {
+    "score": 69,
+    "metrics": {
+      "FCP": 2443,
+      "LCP": 3260,
+      "TBT": 658,
+      "CLS": "0.002",
+      "SI": 5214
+    }
+  }
+}
