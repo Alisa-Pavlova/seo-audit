@@ -1,0 +1,14 @@
+{
+  "url": "https://cryptorank.io/drophunting",
+  "timestamp": "2026-11-02T19:53:27.132Z",
+  "lighthouse": {
+    "score": 91,
+    "metrics": {
+      "FCP": 952,
+      "LCP": 2083,
+      "TBT": 358,
+      "CLS": "0.000",
+      "SI": 985
+    }
+  }
+}
