@@ -147,23 +147,34 @@ async function getLighthouseScore(
   }
 }
 
-async function loadPreviousReport(url: string): Promise<PreviousReport | null> {
+// Результаты прошлого запуска по страницам — из последней сводки audit_*.json
+async function loadPreviousAudit(): Promise<Map<string, PreviousReport>> {
+  const previous = new Map<string, PreviousReport>();
   try {
     const files = await fs.readdir(REPORTS_DIR);
-    const slug = url.replace(/[^a-z0-9]/gi, "_");
-    const matching = files
-      .filter((f) => f.startsWith(`report_${slug}_`) && f.endsWith(".json"))
-      .sort()
-      .slice(-2);
+    const runAt = (f: string) => Number(f.match(/_(\d+)\.json$/)?.[1] ?? 0);
+    const audits = files
+      .filter((f) => f.startsWith("audit_") && f.endsWith(".json"))
+      .sort((a, b) => runAt(a) - runAt(b));
 
-    if (matching.length < 1) return null;
+    if (audits.length < 1) return previous;
 
-    const prev = matching[matching.length - 1];
-    const content = await fs.readFile(path.join(REPORTS_DIR, prev), "utf-8");
-    return JSON.parse(content) as PreviousReport;
+    const last = audits[audits.length - 1];
+    const content = await fs.readFile(path.join(REPORTS_DIR, last), "utf-8");
+    const audit = JSON.parse(content) as SummaryJsonData;
+    for (const page of audit.pages) {
+      previous.set(page.url, {
+        timestamp: audit.timestamp,
+        lighthouse:
+          page.score !== null && page.metrics
+            ? { score: page.score, metrics: page.metrics }
+            : null,
+      });
+    }
   } catch {
-    return null;
+    // нет прошлых отчётов — сравнивать не с чем
   }
+  return previous;
 }
 
 function delta(
@@ -262,21 +273,6 @@ ${prevDate ? `📅 Предыдущий аудит: ${prevDate}` : "📅 Пре�
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
   return report;
-}
-
-async function saveJsonReport(
-  url: string,
-  lhResult: LighthouseScore | null,
-  filename: string,
-): Promise<void> {
-  const report = {
-    url,
-    timestamp: new Date().toISOString(),
-    lighthouse: lhResult
-      ? { score: lhResult.score, metrics: lhResult.metrics }
-      : null,
-  };
-  await fs.writeFile(filename, JSON.stringify(report, null, 2), "utf-8");
 }
 
 function delay(ms: number): Promise<void> {
@@ -498,6 +494,7 @@ ${table}
 async function runSeoAuditBatch(baseUrl: string): Promise<void> {
   await fs.mkdir(REPORTS_DIR, { recursive: true });
 
+  const previous = await loadPreviousAudit();
   const results: AuditResult[] = [];
 
   for (let idx = 0; idx < URLS.length; idx++) {
@@ -509,24 +506,8 @@ async function runSeoAuditBatch(baseUrl: string): Promise<void> {
     console.log("⚡ Запуск Lighthouse...");
     const lhResult = await getAverageLighthouseScore(url, baseUrl);
 
-    const prev = await loadPreviousReport(url);
-
-    const report = generateReport(fullUrl, lhResult, prev);
+    const report = generateReport(fullUrl, lhResult, previous.get(url) ?? null);
     console.log(report);
-
-    const slug = url.replace(/[^a-z0-9]/gi, "_");
-    const auditTimestamp = Date.now();
-    const txtFilename = path.join(
-      REPORTS_DIR,
-      `report_${slug}_${auditTimestamp}.txt`,
-    );
-    const jsonFilename = path.join(
-      REPORTS_DIR,
-      `report_${slug}_${auditTimestamp}.json`,
-    );
-
-    await fs.writeFile(txtFilename, report, "utf-8");
-    await saveJsonReport(fullUrl, lhResult, jsonFilename);
 
     results.push({ url, lhResult });
 
@@ -548,16 +529,7 @@ async function runSeoAuditBatch(baseUrl: string): Promise<void> {
   );
   console.log(summaryReport);
 
-  const summaryTxtFilename = path.join(
-    REPORTS_DIR,
-    `audit_${dateStr}_${Date.now()}.txt`,
-  );
-  const summaryJsonFilename = path.join(
-    REPORTS_DIR,
-    `audit_${dateStr}_${Date.now()}.json`,
-  );
-
-  await fs.writeFile(summaryTxtFilename, summaryReport, "utf-8");
+  const summaryFilename = `audit_${dateStr}_${Date.now()}.json`;
 
   const summaryJsonData: SummaryJsonData = {
     timestamp: new Date().toISOString(),
@@ -581,13 +553,12 @@ async function runSeoAuditBatch(baseUrl: string): Promise<void> {
     })),
   };
   await fs.writeFile(
-    summaryJsonFilename,
+    path.join(REPORTS_DIR, summaryFilename),
     JSON.stringify(summaryJsonData, null, 2),
     "utf-8",
   );
 
-  console.log(`\n💾 Все отчеты сохранены в ./seo_reports/`);
-  console.log(`📄 Итоговый отчет: audit_${dateStr}.txt`);
+  console.log(`\n💾 Итоговый отчет: seo_reports/${summaryFilename}`);
 }
 
 const baseUrl = process.argv[2] || "https://cryptorank.io";

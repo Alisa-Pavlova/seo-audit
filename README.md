@@ -24,6 +24,6 @@ tsx seo.ts https://cryptorank.io
 
 Отчеты сохраняются в папку `seo_reports/`:
 
-- `report_[page]_[timestamp].json` — структурированные данные
-- `report_[page]_[timestamp].txt` — читаемый отчет
-- `audit_[дата]_[timestamp].json` и `audit_[дата]_[timestamp].txt` — итоговые отчеты по всем страницам
+- `audit_[дата]_[timestamp].json` — итоговый отчет по всем страницам (скор и метрики Lighthouse)
+
+Подробный отчет по каждой странице выводится в консоль.
