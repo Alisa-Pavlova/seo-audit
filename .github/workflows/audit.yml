@@ -66,6 +66,12 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+      - name: 💬 Send report to Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          REPORT_URL: ${{ steps.deployment.outputs.page_url }}
+        run: npm run notify
+
       - name: 📧 Upload reports as artifact
         if: always()
         uses: actions/upload-artifact@v4

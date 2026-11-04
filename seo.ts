@@ -21,11 +21,13 @@ const URLS: string[] = [
   "/insights/research/coinhold-by-emcd-fee-based-yield-on-a-mining-ecosystem",
   "/upcoming-ico",
   "/price/bitcoin",
+  "/price/hamster-sol/cny",
   "/token-unlock",
-  "/trending",
-  "/plans",
+  "/fundraising-platforms",
   "/gainers",
+  "/funds/binance-labs",
   "/charts/altcoin-index",
+  "/charts/btc-dominance",
 ];
 
 interface LighthouseMetrics {

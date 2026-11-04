@@ -6,7 +6,8 @@
   "main": "seo.mjs",
   "scripts": {
     "audit": "tsx seo.ts https://cryptorank.io",
-    "render": "node render.mjs"
+    "render": "node render.mjs",
+    "notify": "node discord.mjs"
   },
   "dependencies": {
     "chrome-launcher": "^1.1.0",
